@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+left to right direction
+skin rose
+
+
+
+package Programa {
+
+'Clases
+
+class Videojuego{
+
+    - codigo : int
+    - nombre : String
+    - precio : int
+    - genero : String
+    - clasificacionPorEdades : String
+    - desarrolladora : String
+    - plataforma : String
+
+    + Videojuego(codigo:int, nombre:String, precio:int,genero:String
+    clasificacionPorEdades:String, desarrolladora:String, plataforma:String)
+
+    +gte's()
+    +set's()
+
+}
+
+class Empleado{
+    - nombreDeUsuario : String
+    - contrasena : String
+    - comicion : int
+
+    + Empleado(nombreDeUsuario:String, contrasena:String, comicion:int)
+
+    + get's()
+    + set's()
+
+}
+
+
+}
+
+
+'Relaciones
+
+
+
+@enduml
