@@ -9,7 +9,7 @@ hide methods
 
 entity Empleados{
     Nombre del Usuario
-    Contrasena
+    Contraseña
     Comiciones
 }
 
