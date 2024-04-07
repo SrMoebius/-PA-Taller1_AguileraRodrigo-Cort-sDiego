@@ -25,17 +25,20 @@ entity Videojuegos{
 
 entity Cliente{
     Cuenta
+    Rut
+    Nombre Completo
+    Email
 }
 
 'NOTAS
 note "El cliente puede tener o no una cuenta, con\nla cuál recibe descuentos sobre los juegos" as Nota1
-
+note "El empleado recibe una comision por cada venta realizada (2% del total de la venta)" as Nota2
 
 'RELACIONES
 Empleados "1...*" --> "*" Videojuegos : Vende
-Cliente "1" --> "*" Videojuegos : Compra
+Cliente "1..*" --> "*" Videojuegos : Compra
 
 Nota1 -> Cliente
-
+Nota2 -> Empleados
 
 @enduml

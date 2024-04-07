@@ -23,7 +23,7 @@ class Videojuego{
     + Videojuego(codigo:int, nombre:String, precio:int,genero:String
     clasificacionPorEdades:String, desarrolladora:String, plataforma:String)
 
-    +gte's()
+    +get's()
     +set's()
 
 }
