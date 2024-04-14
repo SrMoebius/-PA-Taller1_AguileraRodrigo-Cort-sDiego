@@ -86,14 +86,12 @@ package Programa {
 
     class Cliente{
 
-        - cuenta : bolean
         - rut : String
         - nombreCompleto : String
         - email : String
 
-        + Cliente(cuenta:boolean, rut:String, nombreCompleto:String, email:String)
+        + Cliente(rut:String, nombreCompleto:String, email:String)
 
-        + getCuenta() : boolean
         + getRut() : String
         + getNombreCompleto() : String
         + getEmail() : String
@@ -128,6 +126,9 @@ package Programa {
 ListaVideojuegos "1" o-- "10" Videojuego : almacena
 ListaEmpleados "1" o-- "5" Empleado : almacena
 ListaClientes "1" o-- "*" Cliente : almacena
+
+Empleado "1" --> "*" Cliente : atiende
+Cliente "1" --> "*" Videojuego : compra
 
 
 @enduml
