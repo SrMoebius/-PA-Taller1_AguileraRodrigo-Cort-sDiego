@@ -1,7 +1,6 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-left to right direction
 skin rose
 
 
@@ -123,9 +122,9 @@ package Programa {
 
 'Relaciones
 
-ListaVideojuegos "1" o-up- "10" Videojuego : almacena
-ListaEmpleados "1" o-- "5" Empleado : almacena
-ListaClientes "1" o-- "*" Cliente : almacena
+ListaVideojuegos "   1" o--right-- " 10" Videojuego : almacena
+ListaEmpleados "1" o--right-- "5" Empleado : almacena
+ListaClientes "1" o-right- "*" Cliente : almacena
 
 Empleado "1" --> "*" Cliente : atiende
 Cliente "1" --> "*" Videojuego : compra
