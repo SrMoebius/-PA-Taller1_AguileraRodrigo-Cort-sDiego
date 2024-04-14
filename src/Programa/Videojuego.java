@@ -32,7 +32,7 @@ public class Videojuego {
         return nombre;
     }
 
-    public int getPercio() {
+    public int getPrecio() {
         return percio;
     }
 
