@@ -23,27 +23,32 @@ package Programa {
         + Videojuego(codigo:int, nombre:String, precio:int,genero:String
         clasificacionPorEdades:String, desarrolladora:String, plataforma:String)
 
-        +get's()
-        +set's()
+        + getCodigo() : int
+        + getNombre() :String
+        + getPrecio() : int
+        + getGenero() : String
+        + getClasificacion() : String
+        + getDesarrolladora() : String
+        + getPlataforma() : String
 
     }
 
     class ListaVideojuegos{
 
-        - listaJuegos : Videojuego[]
+        - arregloJuegos : Videojuego[]
         - cantidadMaxima : int
         - cantidadActual : int
 
         + ListaVideojuegos(cantidadMaxima:int)
 
         + agregar(juegoNuevo:Videojuego) : boolean
-        + eliminar(posicion:int): void
         + obtener(posicion:int) : Videojuego
         + buscar(codigo:int) : int
         + buscar(nombre:String) : int
 
-        + get's()
-        + set's()
+        + getCantidadMaxima() : int
+        + getCantidadActual() : int
+        + getArregloJuegos() : Videojuego
 
     }
 
@@ -54,14 +59,15 @@ package Programa {
 
         + Empleado(nombreDeUsuario:String, contrasena:String, comicion:int)
 
-        + get's()
-        + set's()
+        + getNombreUsuario() : String
+        + getContrasenia() : String
+        + getComicion() : int
 
     }
 
     class ListaEmpleados{
 
-        - arreglo : Empleado[]
+        - arregloEmleados : Empleado[]
         - cantidadMaxima : int
         - cantidadActual : int
 
@@ -72,8 +78,9 @@ package Programa {
         + buscar(codigo:int) : int
         + buscar(nombre:String) : int
 
-        + get's()
-        + set's()
+        + getCantidadMaxima() : int
+        + getCantidadActual() : int
+        + getArregloEmpleados() : Empleado
 
     }
 
@@ -86,14 +93,16 @@ package Programa {
 
         + Cliente(cuenta:boolean, rut:String, nombreCompleto:String, email:String)
 
-        + get's()
-        + set's()
+        + getCuenta() : boolean
+        + getRut() : String
+        + getNombreCompleto() : String
+        + getEmail() : String
 
     }
 
     class ListaClientes{
 
-        - arreglo : Cliente[]
+        - arregloClientes : Cliente[]
         - cantidadMaxima : int
         - cantidadActual : int
 
@@ -104,8 +113,9 @@ package Programa {
         + buscar(codigo:int) : int
         + buscar(nombre:String) : int
 
-        + get's()
-        + set's()
+        + getCantidadMaxima() : int
+        + getCantidadActual() : int
+        + getArregloClentes() : Cliente
 
     }
 
