@@ -2,16 +2,22 @@ package Programa;
 
 public class ListaVideojuegos {
 
-    private Videojuego [] listaVideojuegos;
+
+    //Atributos
+    private Videojuego[] listaVideojuegos;
     private int cantidadMaxima;
     private int cantidadActual;
 
+
+    //Constructor
     public ListaVideojuegos(int cantidadMaxima) {
         this.cantidadMaxima = cantidadMaxima;
         this.cantidadActual = 0;
         this.listaVideojuegos = new Videojuego[this.cantidadMaxima];
     }
 
+
+    //Metodos get
     public Videojuego[] getListaVideojuegos() {
         return listaVideojuegos;
     }

@@ -2,18 +2,22 @@ package Programa;
 
 public class Empleado {
 
-private String nombreUsuario;
-private String contrasena;
 
-private int comicion;
+    //Atributos
+    private String nombreUsuario;
+    private String contrasena;
+    private int comision;
 
-    public Empleado(String nombreUsuario, String contrasena, int comicion) {
+
+    //Constructor
+    public Empleado(String nombreUsuario, String contrasena, int comision) {
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
-        this.comicion = comicion;
+        this.comision = comision;
     }
 
 
+    //Metodos get
     public String getNombreUsuario() {
         return nombreUsuario;
     }
@@ -22,8 +26,8 @@ private int comicion;
         return contrasena;
     }
 
-    public int getComicion() {
-        return comicion;
+    public int getComision() {
+        return comision;
     }
 
 

@@ -2,26 +2,28 @@ package Programa;
 
 public class Videojuego {
 
+
     //Atributos
     private int codigo;
     private String nombre;
-    private int percio;
+    private int precio;
     private String genero;
-    private String ClasificacionPorEdades;
+    private String clasificacionPorEdades;
     private String desarrolladora;
     private String plataforma;
 
 
     //Constructor
-    public Videojuego(int codigo, String nombre, int percio, String genero, String clasificacionPorEdades, String desarrolladora, String plataforma) {
+    public Videojuego(int codigo, String nombre, int precio, String genero, String clasificacionPorEdades, String desarrolladora, String plataforma) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.percio = percio;
+        this.precio = precio;
         this.genero = genero;
-        ClasificacionPorEdades = clasificacionPorEdades;
+        this.clasificacionPorEdades = clasificacionPorEdades;
         this.desarrolladora = desarrolladora;
         this.plataforma = plataforma;
     }
+
 
     //Metodos get
     public int getCodigo() {
@@ -33,7 +35,7 @@ public class Videojuego {
     }
 
     public int getPrecio() {
-        return percio;
+        return precio;
     }
 
     public String getGenero() {
@@ -41,7 +43,7 @@ public class Videojuego {
     }
 
     public String getClasificacionPorEdades() {
-        return ClasificacionPorEdades;
+        return clasificacionPorEdades;
     }
 
     public String getDesarrolladora() {
