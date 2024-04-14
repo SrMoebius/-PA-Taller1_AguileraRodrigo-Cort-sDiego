@@ -72,9 +72,9 @@ package Programa {
 
         + ListaEmpleados(cantidadMaxima:int)
 
-        + agregar(nuevoEmpleado:Empleado) : boolean
+
         + obtener(posicion:int) : Empleado
-        + buscar(codigo:int) : int
+        + buscar(contraseña:String) : int
         + buscar(nombre:String) : int
 
         + getCantidadMaxima() : int
@@ -107,8 +107,7 @@ package Programa {
 
         + agregar(nuevoCliente:Cliente) : boolean
         + obtener(posicion:int) : Cliente
-        + buscar(codigo:int) : int
-        + buscar(nombre:String) : int
+        + buscar(rut:String) : int
 
         + getCantidadMaxima() : int
         + getCantidadActual() : int
