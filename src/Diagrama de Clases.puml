@@ -8,37 +8,106 @@ skin rose
 
 package Programa {
 
-'Clases
+    'Clases
 
-class Videojuego{
+    class Videojuego{
 
-    - codigo : int
-    - nombre : String
-    - precio : int
-    - genero : String
-    - clasificacionPorEdades : String
-    - desarrolladora : String
-    - plataforma : String
+        - codigo : int
+        - nombre : String
+        - precio : int
+        - genero : String
+        - clasificacionPorEdades : String
+        - desarrolladora : String
+        - plataforma : String
 
-    + Videojuego(codigo:int, nombre:String, precio:int,genero:String
-    clasificacionPorEdades:String, desarrolladora:String, plataforma:String)
+        + Videojuego(codigo:int, nombre:String, precio:int,genero:String
+        clasificacionPorEdades:String, desarrolladora:String, plataforma:String)
 
-    +get's()
-    +set's()
+        +get's()
+        +set's()
 
-}
+    }
 
-class Empleado{
-    - nombreDeUsuario : String
-    - contrasena : String
-    - comicion : int
+    class ListaVideojuegos{
 
-    + Empleado(nombreDeUsuario:String, contrasena:String, comicion:int)
+        - listaJuegos : Videojuego[]
+        - cantidadMaxima : int
+        - cantidadActual : int
 
-    + get's()
-    + set's()
+        + ListaVideojuegos(cantidadMaxima:int)
 
-}
+        + agregar(juegoNuevo:Videojuego) : boolean
+        + eliminar(posicion:int): void
+        + obtener(posicion:int) : Videojuego
+        + buscar(codigo:int) : int
+        + buscar(nombre:String) : int
+
+        + get's()
+        + set's()
+
+    }
+
+    class Empleado{
+        - nombreDeUsuario : String
+        - contrasena : String
+        - comicion : int
+
+        + Empleado(nombreDeUsuario:String, contrasena:String, comicion:int)
+
+        + get's()
+        + set's()
+
+    }
+
+    class ListaEmpleados{
+
+        - arreglo : Empleado[]
+        - cantidadMaxima : int
+        - cantidadActual : int
+
+        + ListaEmpleados(cantidadMaxima:int)
+
+        + agregar(nuevoEmpleado:Empleado) : boolean
+        + obtener(posicion:int) : Empleado
+        + buscar(codigo:int) : int
+        + buscar(nombre:String) : int
+
+        + get's()
+        + set's()
+
+    }
+
+    class Cliente{
+
+        - cuenta : bolean
+        - rut : String
+        - nombreCompleto : String
+        - email : String
+
+        + Cliente(cuenta:boolean, rut:String, nombreCompleto:String, email:String)
+
+        + get's()
+        + set's()
+
+    }
+
+    class ListaClientes{
+
+        - arreglo : Cliente[]
+        - cantidadMaxima : int
+        - cantidadActual : int
+
+        + ListaClientes(cantidadMaxima:int)
+
+        + agregar(nuevoCliente:Cliente) : boolean
+        + obtener(posicion:int) : Cliente
+        + buscar(codigo:int) : int
+        + buscar(nombre:String) : int
+
+        + get's()
+        + set's()
+
+    }
 
 
 }
@@ -46,6 +115,9 @@ class Empleado{
 
 'Relaciones
 
+ListaVideojuegos "1" o-- "10" Videojuego : almacena
+ListaEmpleados "1" o-- "5" Empleado : almacena
+ListaClientes "1" o-- "*" Cliente : almacena
 
 
 @enduml
