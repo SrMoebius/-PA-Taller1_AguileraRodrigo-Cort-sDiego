@@ -6,47 +6,94 @@ public class Main {
     public static void main(String[] args) {
 
        menu();
+
     }
 
 
-    public static void menu(){
+    public static void menu() {
 
-        Boolean menuActivado = true;
-
-        while (!menuActivado != false){
+        String CONTINUAR = "";
 
 
-            StdOut.println("***********************************************");
-            StdOut.println("Bienvenido al sistema de ventas de videojuegos ");
-            StdOut.println("***********************************************");
-            StdOut.println("Ingrese una opcion para continuar: ");
-            StdOut.println("1) Ingresar Sesion ");
-            StdOut.println("2) Cerrar Programa");
+        boolean menuActivado = true;
 
-            StdOut.print("opcion:");
-            String opcion = StdIn.readString();
+        while (menuActivado != false) {
+
+            StdOut.println("""
+                    **************************************************
+                    * Bienvenido al Sistema de Ventas de Videojuegos *
+                    **************************************************
+                    Identifícate:
+                    [1] Iniciar Sesión
+                    [2] Cerrar Programa""");
+
+            StdOut.print("\nElija una opción: ");
+            int opcion = validarOpcion();
+
 
             switch (opcion){
 
 
-                case "1" -> {
+                case 1 -> {
+
+                    StdOut.println("\nIniciar Sesión");
+
+                    StdOut.print("\npresione ENTER para continuar");
+                    CONTINUAR = StdIn.readString();
 
                 }
 
+                case 2 -> {
 
-                case "2"-> {
-
+                    StdOut.println("\nCerrar Programa");
+                    menuActivado = false;
 
                 }
-
-
 
                 default -> {
 
-                    StdOut.println("El termino "+opcion+" no es una opcion valida");
+                    StdOut.println("\nLa opción " + opcion + ", no es una opcion del menú");
+
+                    StdOut.print("\npresione ENTER para continuar");
+                    CONTINUAR = StdIn.readString();
+
                 }
 
             }
+
         }
+
     }
+
+
+    public static int validarOpcion() {
+
+        String opcionTexto;
+
+        boolean condicion = false;
+        int opcion = 0;
+
+        do {
+
+            try {
+
+                opcionTexto = StdIn.readString();
+                opcion = Integer.parseInt(opcionTexto);
+                condicion = true;
+                return opcion;
+
+            } catch (Exception exception) {
+
+                StdOut.println("\nIngrese un valor numérico.");
+                StdOut.print("Ingrese una opción: ");
+
+            }
+
+        } while (condicion != true);
+
+        return opcion;
+
+    }
+
+
 }
