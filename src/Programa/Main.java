@@ -5,7 +5,21 @@ import ucn.*;
 public class Main {
     public static void main(String[] args) {
 
-       menu();
+        ListaEmpleados listaEmpleados = new ListaEmpleados(5);
+
+        listaEmpleados.lecturaArchivo("Trabajadores.txt");
+
+        //prueba para comprobar que la lectura se realizó con éxito
+        mostrarEmpleados(listaEmpleados);
+
+        ListaVideojuegos listaVideojuegos = new ListaVideojuegos(10);
+
+        listaVideojuegos.lecturaArchivo("Juegos.txt");
+
+        //prueba para comprobar que la lectura se realizó con éxito
+        mostrarVideojuegos(listaVideojuegos);
+
+        //menu();
 
     }
 
@@ -94,6 +108,49 @@ public class Main {
         return opcion;
 
     }
+
+    public static void mostrarEmpleados(ListaEmpleados listaEmpleados) {
+
+        Empleado empleadoActual;
+
+        for (int i = 0; i < listaEmpleados.getCantidadActual(); i++) {
+
+            empleadoActual = listaEmpleados.obtener(i);
+
+            StdOut.println("\n::: Empleado N°" + (i+1) + " :::");
+
+            StdOut.println("Nombre de Usuario: " + empleadoActual.getNombreUsuario());
+            StdOut.println("Contraseña: " + empleadoActual.getContrasena());
+            StdOut.println("Comisiónes: $" + empleadoActual.getComision());
+
+        }
+
+    }
+
+    public static void mostrarVideojuegos(ListaVideojuegos listaVideojuegos) {
+
+        Videojuego videojuegoActual;
+
+        for (int i = 0; i < listaVideojuegos.getCantidadActual(); i++) {
+
+            videojuegoActual = listaVideojuegos.obtener(i);
+
+            StdOut.println("\n::: Videojuego N°" + (i+1) + " :::");
+
+            StdOut.println("Código: " + videojuegoActual.getCodigo());
+            StdOut.println("Nombre: " + videojuegoActual.getNombre());
+            StdOut.println("Precio: $" + videojuegoActual.getPrecio());
+            StdOut.println("Género: " + videojuegoActual.getGenero());
+            StdOut.println("Clasificación por Edades: " + videojuegoActual.getClasificacionPorEdades());
+            StdOut.println("Desarrolladora: " + videojuegoActual.getDesarrolladora());
+            StdOut.println("Plataforma: " + videojuegoActual.getPlataforma());
+
+        }
+
+    }
+
+
+
 
 
 }
