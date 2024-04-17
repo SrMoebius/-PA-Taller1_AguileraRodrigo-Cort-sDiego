@@ -19,12 +19,12 @@ public class Main {
         //prueba para comprobar que la lectura se realizó con éxito
         //mostrarVideojuegos(listaVideojuegos);
 
-        menu(listaEmpleados);
+        menu(listaEmpleados, listaVideojuegos);
 
     }
 
 
-    public static void menu(ListaEmpleados listaEmpleados) {
+    public static void menu(ListaEmpleados listaEmpleados, ListaVideojuegos listaVideojuegos) {
 
         String CONTINUAR = "";
 
@@ -53,7 +53,7 @@ public class Main {
                     StdOut.print("\nIngrese su nombre de usuario: ");
                     String nombreUsuario = StdIn.readString();
 
-                    StdOut.print("Ingrese su contraseñia: ");
+                    StdOut.print("Ingrese su contraseña: ");
                     String contrasenia = StdIn.readString();
 
                     if (comprobarUsuario(listaEmpleados, nombreUsuario, contrasenia)) {
@@ -89,7 +89,41 @@ public class Main {
 
                                 case 2 -> {
 
-                                    StdOut.println("\nBuscar un Videojuego");
+                                    StdOut.println("""
+                                            \n:::Opciones de busqueda:::
+                                            1) Buscar por código
+                                            2) Buscar por nombre""");
+
+                                    StdOut.print("Elija una opción: ");
+                                    int opcionBusqueda = validarOpcion();
+
+                                    if (opcionBusqueda == 1) {
+
+                                        StdOut.print("\nIngrese el código del videojuego: ");
+                                        int codigo = validarOpcion();
+
+                                        int posicion = listaVideojuegos.buscarVideojuego(codigo);
+
+                                        Videojuego videojuegoBuscado = listaVideojuegos.obtener(posicion);
+
+                                        mostrarDatosVideojuego(videojuegoBuscado);
+
+                                    } else if (opcionBusqueda == 2) {
+
+                                        StdOut.print("\nIngrese el nombre del videojuego: ");
+                                        String nombre = StdIn.readString();
+
+                                        int posicion = listaVideojuegos.buscarVideojuego(nombre);
+
+                                        Videojuego videojuegoBuscado = listaVideojuegos.obtener(posicion);
+
+                                        mostrarDatosVideojuego(videojuegoBuscado);
+
+                                    } else {
+
+                                        StdOut.println("\nLa opción " + opcionBusqueda + ", no es una opcion del menú");
+
+                                    }
 
                                     StdOut.print("\npresione ENTER para continuar");
                                     CONTINUAR = StdIn.readString();
@@ -113,7 +147,7 @@ public class Main {
 
                                 default -> {
 
-                                    StdOut.println("\nLa opción " + opcion2 + ", no es una opcion del menú");
+                                    StdOut.println("\nLa opción " + opcion2 + ", no es una opción del menú");
 
                                     StdOut.print("\npresione ENTER para continuar");
                                     CONTINUAR = StdIn.readString();
@@ -253,6 +287,18 @@ public class Main {
         }
 
         return sesionIniciada;
+
+    }
+
+    public static void mostrarDatosVideojuego(Videojuego videojuego) {
+
+        StdOut.println("\nCódigo: " + videojuego.getCodigo());
+        StdOut.println("Nombre: " + videojuego.getNombre());
+        StdOut.println("Precio: $" + videojuego.getPrecio());
+        StdOut.println("Género: " + videojuego.getGenero());
+        StdOut.println("Clasificación por Edades: " + videojuego.getClasificacionPorEdades());
+        StdOut.println("Desarrolladora: " + videojuego.getDesarrolladora());
+        StdOut.println("Plataforma: " + videojuego.getPlataforma());
 
     }
 
