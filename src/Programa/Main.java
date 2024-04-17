@@ -10,21 +10,21 @@ public class Main {
         listaEmpleados.lecturaArchivo("Trabajadores.txt");
 
         //prueba para comprobar que la lectura se realizó con éxito
-        mostrarEmpleados(listaEmpleados);
+        //mostrarEmpleados(listaEmpleados);
 
         ListaVideojuegos listaVideojuegos = new ListaVideojuegos(10);
 
         listaVideojuegos.lecturaArchivo("Juegos.txt");
 
         //prueba para comprobar que la lectura se realizó con éxito
-        mostrarVideojuegos(listaVideojuegos);
+        //mostrarVideojuegos(listaVideojuegos);
 
-        //menu();
+        menu(listaEmpleados);
 
     }
 
 
-    public static void menu() {
+    public static void menu(ListaEmpleados listaEmpleados) {
 
         String CONTINUAR = "";
 
@@ -34,7 +34,7 @@ public class Main {
         while (menuActivado != false) {
 
             StdOut.println("""
-                    **************************************************
+                    \n**************************************************
                     * Bienvenido al Sistema de Ventas de Videojuegos *
                     **************************************************
                     Identifícate:
@@ -50,7 +50,88 @@ public class Main {
 
                 case 1 -> {
 
-                    StdOut.println("\nIniciar Sesión");
+                    StdOut.print("\nIngrese su nombre de usuario: ");
+                    String nombreUsuario = StdIn.readString();
+
+                    StdOut.print("Ingrese su contraseñia: ");
+                    String contrasenia = StdIn.readString();
+
+                    if (comprobarUsuario(listaEmpleados, nombreUsuario, contrasenia)) {
+
+                        int opcion2 = 0;
+
+                        while (opcion2 != 4) {
+
+
+                            StdOut.println("""
+                                    \n********************
+                                        MENU PRINCIPAL
+                                    ********************
+                                    [1] Vender Videojuego
+                                    [2] Buscar Videojuego
+                                    [3] Menu Estadísticas
+                                    [4] Cerrar Sesión""");
+
+                            StdOut.print("Elige una opción: ");
+                            opcion2 = validarOpcion();
+
+
+                            switch (opcion2) {
+
+                                case 1 -> {
+
+                                    StdOut.println("\nVender un Videojuego");
+
+                                    StdOut.print("\npresione ENTER para continuar");
+                                    CONTINUAR = StdIn.readString();
+
+                                }
+
+                                case 2 -> {
+
+                                    StdOut.println("\nBuscar un Videojuego");
+
+                                    StdOut.print("\npresione ENTER para continuar");
+                                    CONTINUAR = StdIn.readString();
+
+                                }
+
+                                case 3 -> {
+
+                                    StdOut.println("\nMenu Estadísticas");
+
+                                    StdOut.print("\npresione ENTER para continuar");
+                                    CONTINUAR = StdIn.readString();
+
+                                }
+
+                                case 4 -> {
+
+                                    StdOut.println("\nSesión Cerrada con éxito.");
+
+                                }
+
+                                default -> {
+
+                                    StdOut.println("\nLa opción " + opcion2 + ", no es una opcion del menú");
+
+                                    StdOut.print("\npresione ENTER para continuar");
+                                    CONTINUAR = StdIn.readString();
+
+                                }
+
+
+                            }
+
+
+                        }
+
+                    }
+                    else {
+
+                        StdOut.println("\nEl nombre de usuario o la contraseña son inocrrectas.");
+
+                    }
 
                     StdOut.print("\npresione ENTER para continuar");
                     CONTINUAR = StdIn.readString();
@@ -146,6 +227,32 @@ public class Main {
             StdOut.println("Plataforma: " + videojuegoActual.getPlataforma());
 
         }
+
+    }
+
+    public static boolean comprobarUsuario(ListaEmpleados listaEmpleados, String nombreUsuario, String contrasenia) {
+
+        boolean sesionIniciada = false;
+        Empleado empleadoActual;
+
+        for (int i = 0; i < listaEmpleados.getCantidadActual(); i++) {
+
+            empleadoActual = listaEmpleados.obtener(i);
+
+            if (empleadoActual.getNombreUsuario().equalsIgnoreCase(nombreUsuario)) {
+
+                if (empleadoActual.getContrasena().equalsIgnoreCase(contrasenia)) {
+
+                    sesionIniciada = true;
+                    return sesionIniciada;
+
+                }
+
+            }
+
+        }
+
+        return sesionIniciada;
 
     }
 
