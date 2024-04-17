@@ -1,6 +1,7 @@
 package Programa;
 
 import ucn.In;
+import ucn.StdOut;
 
 public class ListaVideojuegos {
 
@@ -52,7 +53,62 @@ public class ListaVideojuegos {
     //Metodo obtener
     public Videojuego obtener(int posicion) {
 
+        if (posicion == -1) {
+            throw new RuntimeException("El juego buscado no existe.");
+        }
+
         return this.listaVideojuegos[posicion];
+
+    }
+
+    public boolean agregarVideojuego(Videojuego nuevoVideojuego) {
+
+        this.listaVideojuegos[this.cantidadActual++] = nuevoVideojuego;
+        return true;
+
+    }
+
+
+    //Buscar juego por código
+    public int buscarVideojuego(int codigo) {
+
+        Videojuego videojuegoActual;
+
+        for (int i = 0; i < this.cantidadActual; i++) {
+
+            videojuegoActual = this.listaVideojuegos[i];
+
+            if (videojuegoActual.getCodigo() == codigo) {
+
+                return i;
+
+            }
+
+        }
+
+        return -1;
+
+    }
+
+
+    //Buscar juego por nombre
+    public int buscarVideojuego(String nombreVideojuego) {
+
+        Videojuego videojuegoActual;
+
+        for (int i = 0; i < this.cantidadActual; i++) {
+
+            videojuegoActual = this.listaVideojuegos[i];
+
+            if (videojuegoActual.getNombre().equalsIgnoreCase(nombreVideojuego)) {
+
+                return i;
+
+            }
+
+        }
+
+        return -1;
 
     }
 
