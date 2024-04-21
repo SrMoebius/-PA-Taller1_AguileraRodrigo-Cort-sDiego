@@ -17,6 +17,46 @@ public class ListaClientes {
     }
 
 
+    public boolean agregarCliente(Cliente nuevoCliente) {
+
+        this.listaClientes[this.cantidadActual++] = nuevoCliente;
+        return true;
+
+    }
+
+
+    public Cliente obtenerCliente(int posicion) {
+
+        if (posicion == -1) {
+            throw new RuntimeException("El juego buscado no existe.");
+        }
+
+        return this.listaClientes[posicion];
+
+    }
+
+
+    public int buscarCliente(String rutCliente) {
+
+        Cliente clienteActual;
+
+        for (int i = 0; i < this.cantidadActual; i++) {
+
+            clienteActual = this.listaClientes[i];
+
+            if (clienteActual.getRut().equalsIgnoreCase(rutCliente)) {
+
+                return i;
+
+            }
+
+        }
+
+        return -1;
+
+    }
+
+
     //Metodos get
     public Cliente[] getListaClientes() {
         return listaClientes;
