@@ -6,5 +6,5 @@
 000006,Gears of War 5,34990,Shooter,Adult,The Coalition,Xbox
 000007,Devil may Cry V,24100,Hack and Slash,Mature,CAPCOM Co. Ltd.,multiplataforma
 000008,Palworld,15500,Survival,Teen,Pocketpair,Xbox
-000009,Marvel’s Spider-Man 2,69990,AccionAventura,Teen,Insomniac Games,PlayStation
+000009,Marvels Spider-Man 2,69990,AccionAventura,Teen,Insomniac Games,PlayStation
 000010,Fire Emblem Engage,58990,JRPG,Teen,Intelligent Systems,Nintendo

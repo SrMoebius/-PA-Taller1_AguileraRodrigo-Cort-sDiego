@@ -5,26 +5,43 @@ import ucn.*;
 public class Main {
     public static void main(String[] args) {
 
-        ListaEmpleados listaEmpleados = new ListaEmpleados(5);
 
+        //LECTURA DE ARCHIVOS
+        ListaEmpleados listaEmpleados = new ListaEmpleados(5);
         listaEmpleados.lecturaArchivo("Trabajadores.txt");
 
         //prueba para comprobar que la lectura se realizó con éxito
         //mostrarEmpleados(listaEmpleados);
 
-        ListaVideojuegos listaVideojuegos = new ListaVideojuegos(10);
 
+        ListaVideojuegos listaVideojuegos = new ListaVideojuegos(10);
         listaVideojuegos.lecturaArchivo("Juegos.txt");
 
         //prueba para comprobar que la lectura se realizó con éxito
         //mostrarVideojuegos(listaVideojuegos);
 
-        menu(listaEmpleados, listaVideojuegos);
+        ListaClientes listaClientes = new ListaClientes(999);
+        Cliente clientePrueba = new Cliente("21.760.570-9", "Rodrigo", "rodrigo@gmail.com");
+        listaClientes.agregarCliente(clientePrueba);
+
+
+        //Se cre una lista que guarde los generos de videojuegos sin repetirse
+        String[] listaGeneroVideojuegos = listaGeneroVideojuegos(listaVideojuegos);
+        int contGeneros = listaGeneroVideojuegos.length;
+
+        //Toma la lista de géneros y elige uno de manera aleatoria
+        String generoVideojuegoConDescuento = videojuegoAleatorio(listaGeneroVideojuegos, contGeneros);
+        StdOut.println(generoVideojuegoConDescuento);
+
+
+        menu(listaEmpleados, listaVideojuegos, listaClientes, generoVideojuegoConDescuento);
 
     }
 
 
-    public static void menu(ListaEmpleados listaEmpleados, ListaVideojuegos listaVideojuegos) {
+
+
+    public static void menu(ListaEmpleados listaEmpleados, ListaVideojuegos listaVideojuegos, ListaClientes listaClientes, String generoVideojuegoConDescuento) {
 
         String CONTINUAR = "";
 
@@ -72,7 +89,7 @@ public class Main {
                                     [3] Menu Estadísticas
                                     [4] Cerrar Sesión""");
 
-                            StdOut.print("Elige una opción: ");
+                            StdOut.print("\nElige una opción: ");
                             opcion2 = validarOpcion();
 
 
@@ -80,7 +97,118 @@ public class Main {
 
                                 case 1 -> {
 
-                                    StdOut.println("\nVender un Videojuego");
+                                    StdOut.print("\nIngrese el nombre del videojuego a vender: ");
+                                    String videojuegoVenta = StdIn.readString();
+
+                                    //Comprueba de que se ingresó un nombre de videojuego existente.
+                                    if (comprobarJuego(listaVideojuegos, videojuegoVenta)) {
+
+                                        StdOut.println("""
+                                            ¿Es usted miembro?
+                                            [1] SI
+                                            [2] NO""");
+
+                                        StdOut.print("Elija una opción: ");
+                                        int opcionMiembro = validarOpcion();
+
+                                        //Caso en que diga que si es cliente.
+                                        if (opcionMiembro == 1) {
+
+                                            StdOut.print("\nIngrese su rut: ");
+                                            String rutCliente = StdIn.readString();
+
+                                            //Caso en que diga que si es cliente, y si sea cliente.
+                                            if (comprobarCliente(listaClientes, rutCliente)) {
+
+                                                StdOut.println("\nGenial!, como es miembro, se le aplican descuentos dependiendo del género del juego que compre.");
+
+                                                String generoVideojuegoComprado = generoVideojuegoComprado(listaVideojuegos, videojuegoVenta);
+
+                                                //StdOut.println(generoVideojuegoComprado);
+                                                //StdOut.println(generoVideojuegoConDescuento);
+
+                                                //Caso en le que el género SI coincida con el género con descuento.
+                                                if (generoVideojuegoComprado.equalsIgnoreCase(generoVideojuegoConDescuento)) {
+
+
+                                                    StdOut.println("En este caso, si aplica, por lo que usted obtiene un descuento del 30%.");
+
+                                                    //Metodo que devuelva el empleado en la sesión actual.
+                                                    Empleado empleadoSesionActual = empleadoSesionActual(listaEmpleados, nombreUsuario);
+
+                                                    int precioVideojuegoActual = devolverPrecio(listaVideojuegos, videojuegoVenta);
+
+                                                    StdOut.println("\nPrecio anterior: $" + precioVideojuegoActual);
+                                                    StdOut.println("Precio con descuento: $" + (precioVideojuegoActual * 0.7));
+
+                                                    //Impresión por pantalla solo para comprobar que la suma de la comisión funcione.
+                                                    StdOut.println("Empleado: " + empleadoSesionActual.getNombreUsuario() + " --> Comisión anterior: $" + empleadoSesionActual.getComision());
+                                                    //El empleado se lleva un 2% del precio del juego.
+                                                    empleadoSesionActual.setComision((int) (precioVideojuegoActual * 0.02));
+                                                    StdOut.println("Empleado: " + empleadoSesionActual.getNombreUsuario() + " --> Comisión actual: $" + empleadoSesionActual.getComision());
+
+                                                    StdOut.println("\nVenta realizada con éxito! :)");
+
+
+                                                //Caso en le que el género NO coincida con el género con descuento.
+                                                } else {
+
+
+                                                    StdOut.println("En este caso, no aplica, por lo que usted no obtiene el descuento del 30%.");
+
+                                                    //Metodo que devuelva el empleado en la sesión actual.
+                                                    Empleado empleadoSesionActual = empleadoSesionActual(listaEmpleados, nombreUsuario);
+
+                                                    int precioVideojuegoActual = devolverPrecio(listaVideojuegos, videojuegoVenta);
+
+                                                    StdOut.println("\nPrecio: $" + precioVideojuegoActual);
+
+                                                    //Impresión por pantalla solo para comprobar que la suma de la comisión funcione.
+                                                    StdOut.println("Empleado: " + empleadoSesionActual.getNombreUsuario() + " --> Comisión anterior: $" + empleadoSesionActual.getComision());
+                                                    //El empleado se lleva un 2% del precio del juego.
+                                                    empleadoSesionActual.setComision((int) (precioVideojuegoActual * 0.02));
+                                                    StdOut.println("Empleado: " + empleadoSesionActual.getNombreUsuario() + " --> Comisión actual: $" + empleadoSesionActual.getComision());
+
+                                                    StdOut.println("\nVenta realizada con éxito! :)");
+
+
+                                                }
+
+                                            //Caso en que diga que si es cliente, pero no sea en realidad.
+                                            } else{
+
+                                            }
+
+                                        //Caso en que diga que no es cliente.
+                                        } else if (opcionMiembro == 2) {
+
+                                            StdOut.println("""
+                                                    ¿Deseas ser miembro?
+                                                    [1] SI
+                                                    [2] NO""");
+
+                                            StdOut.println("Elige una opción: ");
+                                            int opcionNoMienbro = validarOpcion();
+
+                                            if (opcionNoMienbro == 1) {
+
+
+
+                                            }
+
+                                        //Caso en que eliga una opción inválida.
+                                        } else {
+
+                                        }
+
+                                    //Caso en que el juego ingresado sea inválido.
+                                    } else {
+
+                                        StdOut.println("\nEl juego ingresado no existe.");
+
+                                    }
+
+
 
                                     StdOut.print("\npresione ENTER para continuar");
                                     CONTINUAR = StdIn.readString();
@@ -160,8 +288,7 @@ public class Main {
 
                         }
 
-                    }
-                    else {
+                    } else {
 
                         StdOut.println("\nEl nombre de usuario o la contraseña son inocrrectas.");
 
@@ -290,6 +417,50 @@ public class Main {
 
     }
 
+    public static boolean comprobarCliente(ListaClientes listaClientes, String rut) {
+
+        boolean sesionIniciada = false;
+        Cliente clienteActual;
+
+        for (int i = 0; i < listaClientes.getCantidadActual(); i++) {
+
+            clienteActual = listaClientes.obtenerCliente(i);
+
+            if (clienteActual.getRut().equalsIgnoreCase(rut)) {
+
+                sesionIniciada = true;
+                return sesionIniciada;
+
+            }
+
+        }
+
+        return sesionIniciada;
+
+    }
+
+    public static boolean comprobarJuego(ListaVideojuegos listaVideojuegos, String nombreJuegoVendido) {
+
+        boolean sesionIniciada = false;
+        Videojuego videojuegoActual;
+
+        for (int i = 0; i < listaVideojuegos.getCantidadActual(); i++) {
+
+            videojuegoActual = listaVideojuegos.obtener(i);
+
+            if (videojuegoActual.getNombre().equalsIgnoreCase(nombreJuegoVendido)) {
+
+                sesionIniciada = true;
+                return sesionIniciada;
+
+            }
+
+        }
+
+        return sesionIniciada;
+
+    }
+
     public static void mostrarDatosVideojuego(Videojuego videojuego) {
 
         StdOut.println("\nCódigo: " + videojuego.getCodigo());
@@ -302,7 +473,134 @@ public class Main {
 
     }
 
+    private static String[] listaGeneroVideojuegos(ListaVideojuegos listaVideojuegos) {
 
+
+        //Creo una lista "momentania", para guardar los nombres de los géneros (sin que se repitan)
+        //pero no logro obtener la  cantidad de géneros totales, por lo que creo al variable "cont" para hacerlo
+        String[] lista = new String[listaVideojuegos.getCantidadActual()];
+        int cont = 0;
+
+        Videojuego videojuego1;
+        Videojuego videojuego2;
+
+        boolean existe = false;
+
+        for (int i = 0; i < listaVideojuegos.getCantidadActual(); i++) {
+            
+            videojuego1 = listaVideojuegos.obtener(i);
+            
+            existe = false;
+
+            for (int j = 0; j < cont; j++) {
+
+                videojuego2 = listaVideojuegos.obtener(j);
+
+                if (videojuego1.getGenero().equalsIgnoreCase(videojuego2.getGenero())) {
+
+                    existe = true;
+                    continue;
+
+                }
+                
+            }
+
+            if (existe == false) {
+
+                lista[cont++] = videojuego1.getGenero();
+
+            }
+            
+            
+        }
+
+        //Ahora que la lista está terminada, tengo la cantidad real de cantidad de géneros,
+        // por lo que creo una lista nueva, con dicha cantidad de géneros, y copio los nombre de los géneros a la nueva lista.
+        String[] listaGeneroVideojuegos = new String[cont];
+        for (int i = 0; i < cont; i++) {
+
+            listaGeneroVideojuegos[i] = lista[i];
+
+        }
+
+        //Y devuelvo esta nueva lista
+        return listaGeneroVideojuegos;
+
+    }
+
+    public static String videojuegoAleatorio(String[] listaGeneroVideojuegos, int contGeneros) {
+
+        String generoConDescuento = "";
+
+        int posicionRandom = (int)(Math.random()*(contGeneros));
+
+        StdOut.println(posicionRandom);
+
+        generoConDescuento = listaGeneroVideojuegos[posicionRandom];
+
+        return generoConDescuento;
+
+    }
+
+    public static int devolverPrecio(ListaVideojuegos listaVideojuegos, String nombreVideojuego) {
+
+        Videojuego videojuegoComprado;
+
+        for (int i = 0; i < listaVideojuegos.getCantidadActual(); i++) {
+
+            videojuegoComprado = listaVideojuegos.obtener(i);
+
+            if (videojuegoComprado.getNombre().equalsIgnoreCase(nombreVideojuego)) {
+
+                return videojuegoComprado.getPrecio();
+
+            }
+
+        }
+
+        return -1;
+
+    }
+
+    public static Empleado empleadoSesionActual(ListaEmpleados listaEmpleados, String nombreUsuario) {
+
+        Empleado empleadoActual;
+
+        for (int i = 0; i < listaEmpleados.getCantidadActual(); i++) {
+
+            empleadoActual = listaEmpleados.obtener(i);
+
+            if (empleadoActual.getNombreUsuario().equalsIgnoreCase(nombreUsuario)) {
+
+                return empleadoActual;
+
+            }
+
+        }
+
+        return null;
+
+    }
+
+    public static String generoVideojuegoComprado(ListaVideojuegos listaVideojuegos, String nombreJuego) {
+
+        Videojuego videojuegoComprado;
+
+        for (int i = 0; i < listaVideojuegos.getCantidadActual(); i++) {
+
+            videojuegoComprado = listaVideojuegos.obtener(i);
+
+            if (videojuegoComprado.getNombre().equalsIgnoreCase(nombreJuego)) {
+
+                return videojuegoComprado.getGenero();
+
+            }
+
+        }
+
+        return null;
+
+    }
 
 
 

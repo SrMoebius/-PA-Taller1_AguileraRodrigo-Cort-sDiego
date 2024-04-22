@@ -30,5 +30,8 @@ public class Empleado {
         return comision;
     }
 
+    public void setComision(int comision) {
+        this.comision += comision;
+    }
 
 }
