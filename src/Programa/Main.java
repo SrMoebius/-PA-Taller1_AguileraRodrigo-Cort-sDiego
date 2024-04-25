@@ -301,14 +301,14 @@ public class Main {
     }
 
 
-    /*
-
-  *@param listaGeneroVideojuegos, contGeneros
-  *@return videojuegoAleatorio
-
-  funcion para realizar el descuento a un genero de videojuego (que se encuentra en la lista) de
-  manera aleatoria, se ingresa la lista de generos de videojuegos con la cantidad existentes de generos.
-
+    /**
+     *
+     * Función para realizar el descuento a un genero de videojuego (que se encuentra en la lista) de
+     * manera aleatoria, se ingresa la lista de generos de videojuegos con la cantidad existentes de generos.
+     *
+     * @param listaGeneroVideojuegos
+     * @param contGeneros
+     * @return Devuelve un String con el nombre del género escogido aleatoriamente.
      */
     public static String videojuegoAleatorio(String[] listaGeneroVideojuegos, int contGeneros) {
 
@@ -484,9 +484,9 @@ public class Main {
         if (comprobarJuego(listaVideojuegos, videojuegoVenta)) {
 
             StdOut.println("""
-                                            ¿Es usted miembro?
-                                            [1] SI
-                                            [2] NO""");
+                        ¿Es usted miembro?
+                        [1] SI
+                        [2] NO""");
 
             StdOut.print("Elija una opción: ");
             int opcionMiembro = validarOpcion();
@@ -530,7 +530,7 @@ public class Main {
                         StdOut.println("\nVenta realizada con éxito! :)");
 
 
-                        //Caso en le que el género NO coincida con el género con descuento.
+                    //Caso en le que el género NO coincida con el género con descuento.
                     } else {
 
 
@@ -554,18 +554,18 @@ public class Main {
 
                     }
 
-                    //Caso en que diga que si es cliente, pero no sea en realidad.
+                //Caso en que diga que si es cliente, pero no sea en realidad.
                 } else{
 
                 }
 
-                //Caso en que diga que no es cliente.
+            //Caso en que diga que no es cliente.
             } else if (opcionMiembro == 2) {
 
                 StdOut.println("""
-                                                    ¿Deseas ser miembro?
-                                                    [1] SI
-                                                    [2] NO""");
+                                ¿Deseas ser miembro?
+                                [1] SI
+                                [2] NO""");
 
                 StdOut.println("Elige una opción: ");
                 int opcionNoMienbro = validarOpcion();
@@ -576,12 +576,12 @@ public class Main {
 
                 }
 
-                //Caso en que eliga una opción inválida.
+            //Caso en que eliga una opción inválida.
             } else {
 
             }
 
-            //Caso en que el juego ingresado sea inválido.
+        //Caso en que el juego ingresado sea inválido.
         } else {
 
             StdOut.println("\nEl juego ingresado no existe.");
