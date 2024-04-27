@@ -19,7 +19,18 @@ public class ListaClientes {
 
     public boolean agregarCliente(Cliente nuevoCliente) {
 
-        //TODO: Realizar excepción en caso de que el cliente ya exista.
+        //se guarda el rut del cliente ingresado
+       String rutClienteBuscado = nuevoCliente.getRut();
+
+       // se verifica que NO exista en la lista, para no repetirse.
+       int Verificar = buscarCliente(rutClienteBuscado);
+
+       if(Verificar != -1 ){
+
+           // el cliente ya existe, por lo tanto..
+           return false;
+       }
+
 
         this.listaClientes[this.cantidadActual++] = nuevoCliente;
         return true;

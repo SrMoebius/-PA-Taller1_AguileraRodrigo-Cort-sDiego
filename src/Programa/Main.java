@@ -442,6 +442,8 @@ public class Main {
 
                         StdOut.println("\nMenu Estadísticas");
 
+                        menuEstadisticas();
+
                         StdOut.print("\npresione ENTER para continuar");
                         CONTINUAR = StdIn.readString();
 
@@ -477,6 +479,52 @@ public class Main {
     }
  }
 
+    private static void menuEstadisticas() {
+
+        boolean menu = false ;// se crea el menu con un ciclo while
+
+        while (!menu){
+
+            StdOut.println("""
+                                    \n**********************
+                                       MENU ESTADISTICAS
+                                    ***********************
+                                    [1] Videojuego más vendido
+                                    [2] Plataforma con mayor ventas
+                                    [3] Venta a clientes registrados
+                                    [4] Imprimir ventas totales
+                                    [5] Trabajador con más ventas
+                                    [6] Menú anterior""");
+
+            StdOut.print("Opcion: ");
+            int opcion = validarOpcion();
+
+            switch (opcion) {
+
+                // Estadistica videojuego mas vendido
+                case 1 ->{
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+        }
+
+
+    }
+
     public static void VenderVideojuego(ListaVideojuegos listaVideojuegos,ListaClientes listaClientes,ListaEmpleados listaEmpleados,String generoVideojuegoConDescuento,String nombreUsuario){
 
         StdOut.print("\nIngrese el nombre del videojuego a vender: ");
@@ -506,8 +554,8 @@ public class Main {
 
                     String generoVideojuegoComprado = generoVideojuegoComprado(listaVideojuegos, videojuegoVenta);
 
-                    //StdOut.println(generoVideojuegoComprado);
-                    //StdOut.println(generoVideojuegoConDescuento);
+                    StdOut.println("\nEl genero del videojuego a comprar es: "+generoVideojuegoComprado);
+                    StdOut.println("\nEl genero con descuento es: "+generoVideojuegoConDescuento);
 
                     //Caso en el que el género SI coincida con el género con descuento.
                     if (generoVideojuegoComprado.equalsIgnoreCase(generoVideojuegoConDescuento)) {
@@ -596,6 +644,10 @@ public class Main {
                         StdOut.print("\npresione ENTER para volver al menu y realizar la compra correctamente.");
                         String CONTINUAR = StdIn.readString();
 
+                    }
+                    else if(!listaClientes.agregarCliente(nuevoCliente)){
+
+                        StdOut.println("Estimado usuario, el usuario con este rut ya existe");
                     }
 
                 //Caso en el que decida NO ser miembro
