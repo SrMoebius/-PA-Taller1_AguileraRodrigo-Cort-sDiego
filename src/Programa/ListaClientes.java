@@ -12,40 +12,32 @@ public class ListaClientes {
     //Constructor
     public ListaClientes(int cantidadMaxima) {
         this.cantidadMaxima = cantidadMaxima;
-        this.cantidadActual = 0;
+        this.cantidadActual =0;
         this.listaClientes = new Cliente[this.cantidadMaxima];
     }
 
 
     public boolean agregarCliente(Cliente nuevoCliente) {
 
-        if (existeCliente(nuevoCliente.getRut())) {
-            return false;
-        }
+        //se guarda el rut del cliente ingresado
+       String rutClienteBuscado = nuevoCliente.getRut();
+
+       // se verifica que NO exista en la lista, para no repetirse.
+       int Verificar = buscarCliente(rutClienteBuscado);
+
+       if(Verificar != -1 ){
+
+           // el cliente ya existe, por lo tanto..
+           return false;
+       }
+
 
         this.listaClientes[this.cantidadActual++] = nuevoCliente;
         return true;
 
     }
 
-    public boolean existeCliente(String rut) {
-
-        Cliente clienteActual;
-
-        for (int i = 0; i < this.cantidadActual; i++) {
-
-            clienteActual = this.obtenerCliente(i);
-
-            if (clienteActual.getRut().equalsIgnoreCase(rut)) {
-
-                return true;
-
-            }
-
-        }
-
-        return false;
-    }
+    //TODO: Crear método para saber si un cliente existe o no
 
 
     public Cliente obtenerCliente(int posicion) {
