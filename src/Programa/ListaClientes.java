@@ -19,16 +19,20 @@ public class ListaClientes {
 
     public boolean agregarCliente(Cliente nuevoCliente) {
 
+        //TODO: Realizar excepción en caso de que el cliente ya exista.
+
         this.listaClientes[this.cantidadActual++] = nuevoCliente;
         return true;
 
     }
 
+    //TODO: Crear método para saber si un cliente existe o no
+
 
     public Cliente obtenerCliente(int posicion) {
 
         if (posicion == -1) {
-            throw new RuntimeException("El juego buscado no existe.");
+            throw new RuntimeException("El cliente buscado no existe.");
         }
 
         return this.listaClientes[posicion];

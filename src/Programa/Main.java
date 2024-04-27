@@ -12,6 +12,8 @@ public class Main {
 
     public static void menu() {
 
+        //TODO: Calcular Estadísticas
+
 
         //LECTURA DE ARCHIVOS
         ListaEmpleados listaEmpleados = new ListaEmpleados(5);
@@ -507,7 +509,7 @@ public class Main {
                     //StdOut.println(generoVideojuegoComprado);
                     //StdOut.println(generoVideojuegoConDescuento);
 
-                    //Caso en le que el género SI coincida con el género con descuento.
+                    //Caso en el que el género SI coincida con el género con descuento.
                     if (generoVideojuegoComprado.equalsIgnoreCase(generoVideojuegoConDescuento)) {
 
 
@@ -557,6 +559,8 @@ public class Main {
                 //Caso en que diga que si es cliente, pero no sea en realidad.
                 } else{
 
+                    StdOut.println("\nLamentablemente usted, no es cliente de esta tienda.");
+
                 }
 
             //Caso en que diga que no es cliente.
@@ -567,17 +571,65 @@ public class Main {
                                 [1] SI
                                 [2] NO""");
 
-                StdOut.println("Elige una opción: ");
+                StdOut.print("\nElige una opción: ");
                 int opcionNoMienbro = validarOpcion();
 
+                //Caso en el que decida ser miembro
                 if (opcionNoMienbro == 1) {
 
+                    StdOut.println("\nGenial!");
 
+                    StdOut.print("\nComience ingresando su rut: ");
+                    String rut = StdIn.readString();
+
+                    StdOut.print("Ingrese su nombre: ");
+                    String nombre = StdIn.readString();
+
+                    StdOut.print("Ingrese su correo: ");
+                    String correo = StdIn.readString();
+
+                    Cliente nuevoCliente = new Cliente(rut, nombre, correo);
+
+                    if (listaClientes.agregarCliente(nuevoCliente)) {
+                        StdOut.println("\nCliente agregado con éxito!");
+
+                        StdOut.print("\npresione ENTER para volver al menu y realizar la compra correctamente.");
+                        String CONTINUAR = StdIn.readString();
+
+                    }
+
+                //Caso en el que decida NO ser miembro
+                } else if (opcionNoMienbro == 2) {
+
+                    StdOut.println("\nNo hay problema!");
+
+                    StdOut.println("\nComo no es miembro, no se le aplican descuentos.");
+
+                    //Metodo que devuelva el empleado en la sesión actual.
+                    Empleado empleadoSesionActual = empleadoSesionActual(listaEmpleados, nombreUsuario);
+
+                    int precioVideojuegoActual = devolverPrecio(listaVideojuegos, videojuegoVenta);
+
+                    StdOut.println("\nPrecio: $" + precioVideojuegoActual);
+
+                    //Impresión por pantalla solo para comprobar que la suma de la comisión funcione.
+                    StdOut.println("Empleado: " + empleadoSesionActual.getNombreUsuario() + " --> Comisión anterior: $" + empleadoSesionActual.getComision());
+                    //El empleado se lleva un 2% del precio del juego.
+                    empleadoSesionActual.setComision((int) (precioVideojuegoActual * 0.02));
+                    StdOut.println("Empleado: " + empleadoSesionActual.getNombreUsuario() + " --> Comisión actual: $" + empleadoSesionActual.getComision());
+
+                    StdOut.println("\nVenta realizada con éxito! :)");
+
+                } else {
+
+                    StdOut.println("\nLa opción " + opcionNoMienbro + ", no es una opcion del menú");
 
                 }
 
-            //Caso en que eliga una opción inválida.
+                //Caso en que eliga una opción inválida.
             } else {
+
+                StdOut.println("\nLa opción " + opcionMiembro + ", no es una opcion del menú");
 
             }
 
