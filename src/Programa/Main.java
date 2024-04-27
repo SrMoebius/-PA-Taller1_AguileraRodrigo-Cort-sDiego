@@ -193,23 +193,7 @@ public class Main {
 
     public static boolean comprobarCliente(ListaClientes listaClientes, String rut) {
 
-        boolean sesionIniciada = false;
-        Cliente clienteActual;
-
-        for (int i = 0; i < listaClientes.getCantidadActual(); i++) {
-
-            clienteActual = listaClientes.obtenerCliente(i);
-
-            if (clienteActual.getRut().equalsIgnoreCase(rut)) {
-
-                sesionIniciada = true;
-                return sesionIniciada;
-
-            }
-
-        }
-
-        return sesionIniciada;
+        return listaClientes.existeCliente(rut);
 
     }
 
@@ -470,7 +454,7 @@ public class Main {
 
         } else {
 
-            StdOut.println("\nEl nombre de usuario o la contraseña son inocrrectas.");
+            StdOut.println("\nEl nombre de usuario o la contraseña son incorrectas.");
 
         }
 
@@ -593,9 +577,10 @@ public class Main {
                     if (listaClientes.agregarCliente(nuevoCliente)) {
                         StdOut.println("\nCliente agregado con éxito!");
 
-                        StdOut.print("\npresione ENTER para volver al menu y realizar la compra correctamente.");
-                        String CONTINUAR = StdIn.readString();
+                        StdOut.print("\nDebe volver al menu y realizar la compra correctamente.");
 
+                    } else {
+                        StdOut.println("\nEl cliente ingresado ya existe.");
                     }
 
                 //Caso en el que decida NO ser miembro
