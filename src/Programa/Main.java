@@ -5,11 +5,32 @@ import ucn.*;
 public class Main {
     public static void main(String[] args) {
 
+        /***************************
+         *
+         * @Autores: Rodrigo Aguilera y Diego Cortés
+         *
+         * Este programa está basado en una tienda sobre videojuego llamada GameTech, la cuál, le solicitó
+         *  a los estudiantes de Programación Avanzada de la UCN, crear un programa que los ayude a mejorar
+         *  la experiencia de compra de sus clientes.
+         *
+         * Este programa utiliza diversas clases para manejar los datos, ya sea, de los empleados que comtrolan
+         *  el programa, los videojuegos que posee la propia tienda, como también, los clientes y/o miembros
+         *  acuales o potenciales de ésta misma.
+         *
+         ***************************/
+
+
         menu();
+
 
     }
 
 
+    /**
+     *
+     * Función que se encarga de manejar el menú completo del programa.
+     *
+     */
     public static void menu() {
 
         //TODO: Calcular Estadísticas
@@ -96,6 +117,12 @@ public class Main {
     }
 
 
+    /**
+     *
+     * Función que verifica que la opción ingresada en algún menú sea correcta.
+     *
+     * @return Devuelve un int con el valor de una opción del menú.
+     */
     public static int validarOpcion() {
 
         String opcionTexto;
@@ -125,6 +152,13 @@ public class Main {
 
     }
 
+
+    /**
+     *
+     * Función que muestra por pantalla todos los empleados de la listaEmpleados.
+     *
+     * @param listaEmpleados
+     */
     public static void mostrarEmpleados(ListaEmpleados listaEmpleados) {
 
         Empleado empleadoActual;
@@ -143,6 +177,13 @@ public class Main {
 
     }
 
+
+    /**
+     *
+     * Función que muestra por pantalla todos los juegos de la listaVideojuegos.
+     *
+     * @param listaVideojuegos
+     */
     public static void mostrarVideojuegos(ListaVideojuegos listaVideojuegos) {
 
         Videojuego videojuegoActual;
@@ -165,6 +206,16 @@ public class Main {
 
     }
 
+
+    /**
+     *
+     * Función para comprobar que el nombre de usuario y la contraseña ingresada por el empleado, sean correctas.
+     *
+     * @param listaEmpleados
+     * @param nombreUsuario
+     * @param contrasenia
+     * @return Devuelve un boolean, true si los daots son correctos y false si son incorrectos.
+     */
     public static boolean comprobarUsuario(ListaEmpleados listaEmpleados, String nombreUsuario, String contrasenia) {
 
         boolean sesionIniciada = false;
@@ -191,15 +242,33 @@ public class Main {
 
     }
 
+
+    /**
+     *
+     * Función para comprobar que el cliente que inició sesión exista.
+     *
+     * @param listaClientes
+     * @param rut
+     * @return Devuelve un boolean, true si sí existe y false si no.
+     */
     public static boolean comprobarCliente(ListaClientes listaClientes, String rut) {
 
         return listaClientes.existeCliente(rut);
 
     }
 
+
+    /**
+     *
+     * Función para comprobar que el nombre del juego ingresado por el usuario, si existe dentro de la listaVideojuegos.
+     *
+     * @param listaVideojuegos
+     * @param nombreJuegoVendido
+     * @return Devuelve un boolean si el nombre ingresado existe o no dentro de la listaVideojuegos.
+     */
     public static boolean comprobarJuego(ListaVideojuegos listaVideojuegos, String nombreJuegoVendido) {
 
-        boolean sesionIniciada = false;
+        boolean existe = false;
         Videojuego videojuegoActual;
 
         for (int i = 0; i < listaVideojuegos.getCantidadActual(); i++) {
@@ -208,17 +277,24 @@ public class Main {
 
             if (videojuegoActual.getNombre().equalsIgnoreCase(nombreJuegoVendido)) {
 
-                sesionIniciada = true;
-                return sesionIniciada;
+                existe = true;
+                return existe;
 
             }
 
         }
 
-        return sesionIniciada;
+        return existe;
 
     }
 
+
+    /**
+     *
+     * Función para mostrar por pantalla toda la información de un videojuego.
+     *
+     * @param videojuego
+     */
     public static void mostrarDatosVideojuego(Videojuego videojuego) {
 
         StdOut.println("\nCódigo: " + videojuego.getCodigo());
@@ -231,6 +307,14 @@ public class Main {
 
     }
 
+
+    /**
+     *
+     * Función para crear una lista con los géneros de los videojuegos (sin repetirse).
+     *
+     * @param listaVideojuegos
+     * @return Devuelve una lista de tipo String con los géneros de los videojuegos.
+     */
     private static String[] listaGeneroVideojuegos(ListaVideojuegos listaVideojuegos) {
 
 
@@ -310,6 +394,15 @@ public class Main {
 
     }
 
+
+    /**
+     *
+     * Función que devuelve el precio del videojuego comprado por el cliente.
+     *
+     * @param listaVideojuegos
+     * @param nombreVideojuego
+     * @return Devuelve un int con el valor del precio del juego comprado.
+     */
     public static int devolverPrecio(ListaVideojuegos listaVideojuegos, String nombreVideojuego) {
 
         Videojuego videojuegoComprado;
@@ -330,6 +423,15 @@ public class Main {
 
     }
 
+
+    /**
+     *
+     * Función que devuelve la instancia del empleado el cuál inició sesión en el menú principal.
+     *
+     * @param listaEmpleados
+     * @param nombreUsuario
+     * @return Devuelve una instancia de la clase Empleado.
+     */
     public static Empleado empleadoSesionActual(ListaEmpleados listaEmpleados, String nombreUsuario) {
 
         Empleado empleadoActual;
@@ -350,6 +452,15 @@ public class Main {
 
     }
 
+
+    /**
+     *
+     * Función que devuelve el género del videojugo comprado por el cliente.
+     *
+     * @param listaVideojuegos
+     * @param nombreJuego
+     * @return Devuelve un String con el nombre del género del videojuego ingresado por parámetro.
+     */
     public static String generoVideojuegoComprado(ListaVideojuegos listaVideojuegos, String nombreJuego) {
 
         Videojuego videojuegoComprado;
@@ -371,7 +482,16 @@ public class Main {
     }
 
 
-
+    /**
+     *
+     * Función con la que se inicia sesión en el menú, preguntando al empleado su nombre de usuario y contraseña.
+     * Validando si estas están correctas o no.
+     *
+     * @param listaEmpleados
+     * @param listaVideojuegos
+     * @param listaClientes
+     * @param generoVideojuegoConDescuento
+     */
     public static void IniciarSesion(ListaEmpleados listaEmpleados, ListaVideojuegos listaVideojuegos, ListaClientes listaClientes, String generoVideojuegoConDescuento){{
 
         String CONTINUAR;
@@ -463,6 +583,8 @@ public class Main {
     }
  }
 
+
+    //TODO: Realizar JavaDoc cuando este menú esté terminado.
     private static void menuEstadisticas() {
 
         boolean menu = false ;// se crea el menu con un ciclo while
@@ -509,6 +631,18 @@ public class Main {
 
     }
 
+
+    /**
+     *
+     * Función con la opción de vender un videojuego a un cliente que pueda ser miembro o no.
+     * Asi también, si no es miebre, puede convertirse en uno.
+     *
+     * @param listaVideojuegos
+     * @param listaClientes
+     * @param listaEmpleados
+     * @param generoVideojuegoConDescuento
+     * @param nombreUsuario
+     */
     public static void VenderVideojuego(ListaVideojuegos listaVideojuegos,ListaClientes listaClientes,ListaEmpleados listaEmpleados,String generoVideojuegoConDescuento,String nombreUsuario){
 
         StdOut.print("\nIngrese el nombre del videojuego a vender: ");
@@ -676,7 +810,13 @@ public class Main {
     }
 
 
-
+    /**
+     *
+     * Función con la opción de poder buscar un videojuego, tanto por su código, como por su nombre.
+     *
+     * @param listaVideojuegos
+     * @param listaEmpleados
+     */
     public static void buscarVideojuego(ListaVideojuegos listaVideojuegos,ListaEmpleados listaEmpleados){
 
         StdOut.println("""
