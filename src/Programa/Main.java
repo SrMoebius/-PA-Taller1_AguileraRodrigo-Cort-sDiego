@@ -1,3 +1,4 @@
+package Programa;
 
 import ucn.*;
 
@@ -201,7 +202,7 @@ return posicionEmpleado;
      */
 
     public static void MenuPrincipal(ListaEmpleados listaEmpleados, ListaVideojuegos listaVideojuegos, ListaCliente listaCliente,
-                                     int posicionEmpleado,String generoOferta){
+                                     int posicionEmpleado, String generoOferta){
 
 
         boolean menu = false;
@@ -284,7 +285,7 @@ return posicionEmpleado;
                                     \n**********************
                                        MENU ESTADISTICAS
                                     ***********************
-                                    [1] Videojuego más vendido
+                                    [1] Programa.Videojuego más vendido
                                     [2] Plataforma con mayor ventas
                                     [3] Venta a clientes registrados
                                     [4] Imprimir ventas totales
@@ -416,7 +417,7 @@ return posicionEmpleado;
 
         StdOut.println("\neliga una opcion para buscar el videojuego!!");
         StdOut.println("[1] Codigo unico");
-        StdOut.println("[2] Nombre Videojuego");
+        StdOut.println("[2] Nombre Programa.Videojuego");
 
         String opcion = StdIn.readString();
 
@@ -498,7 +499,7 @@ return posicionEmpleado;
      * @param posicionEmpleado
      */
     public static boolean venderVideojuego(ListaVideojuegos listaVideojuegos, ListaEmpleados listaEmpleados,
-                                           ListaCliente listaCliente,String generoOferta, int posicionEmpleado){
+                                           ListaCliente listaCliente, String generoOferta, int posicionEmpleado){
 
         boolean miembro = false;
 

@@ -1,3 +1,5 @@
+package Programa;
+
 import ucn.ArchivoEntrada;
 import ucn.ArchivoSalida;
 import ucn.In;
@@ -14,7 +16,7 @@ public class ListaVideojuegos {
     private int cantidadPlaystation = 0;
     private int cantidadXbox = 0;
 
-    private Videojuego [] listaVideojuegos;
+    private Videojuego[] listaVideojuegos;
 
     public ListaVideojuegos(int cantidadMaxima) {
         this.cantidadMaxima = cantidadMaxima;

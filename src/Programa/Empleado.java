@@ -1,3 +1,5 @@
+package Programa;
+
 public class Empleado {
 
     private String nombreUsuario;

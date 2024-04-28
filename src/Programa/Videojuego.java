@@ -1,3 +1,5 @@
+package Programa;
+
 public class Videojuego {
 
    private int codigo;

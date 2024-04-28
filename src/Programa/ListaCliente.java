@@ -1,10 +1,12 @@
+package Programa;
+
 public class ListaCliente {
 
     private int cantidadMaxima;
 
     private int cantidadActual;
 
-    private Cliente [] listaClientes;
+    private Cliente[] listaClientes;
 
     public ListaCliente(int cantidadMaxima) {
         this.cantidadMaxima = cantidadMaxima;
@@ -52,7 +54,7 @@ return posicion;
 
     /**
      *
-     * Función para agregar un Cliente, verificando si existe o si la lista permite ingresar un cliente nuevo.
+     * Función para agregar un Programa.Cliente, verificando si existe o si la lista permite ingresar un cliente nuevo.
      *
      * @param clientenuevo
      *

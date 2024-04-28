@@ -1,10 +1,10 @@
 000001,Persona 3 Reload,60900,JRPG,Mature,ATLUS,multiplataforma
 000002,Left 4 Dead 2,5750,Shooter,Mature,Valve,Xbox
 000003,Yakuza: Like a Dragon,29990,JRPG,Mature,Ryu Ga Gotoku Studio,multiplataforma
-000004,The Legend of Zelda: Breath of the Wild,58990,Acción-Aventura,Everyone,Nintendo EPD Monolith Soft,Nintendo
+000004,The Legend of Zelda: Breath of the Wild,58990,Accion-Aventura,Everyone,Nintendo EPD Monolith Soft,Nintendo
 000005,Bloodborne,19990,ARPG,Mature,FromSoftware,PlayStation
 000006,Gears of War 5,34990,Shooter,Adult,The Coalition,Xbox
 000007,Devil may Cry V,24100,Hack and Slash,Mature,CAPCOM Co. Ltd.,multiplataforma
 000008,Palworld,15500,Survival,Teen,Pocketpair,Xbox
-000009,Marvel’s Spider-Man 2,69990,Acción-Aventura,Teen,Insomniac Games,PlayStation
+000009,Marvel’s Spider-Man 2,69990,Accion-Aventura,Teen,Insomniac Games,PlayStation
 000010,Fire Emblem Engage,58990,JRPG,Teen,Intelligent Systems,Nintendo

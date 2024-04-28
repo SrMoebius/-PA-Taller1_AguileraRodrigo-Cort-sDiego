@@ -1,0 +1,132 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skin rose
+
+
+
+package Programa {
+
+    'Clases
+
+    class Videojuego{
+
+        - codigo : int
+        - nombre : String
+        - precio : int
+        - genero : String
+        - clasificacionPorEdades : String
+        - desarrolladora : String
+        - plataforma : String
+
+        + Videojuego(codigo:int, nombre:String, precio:int,genero:String
+        clasificacionPorEdades:String, desarrolladora:String, plataforma:String)
+
+        + getCodigo() : int
+        + getNombre() :String
+        + getPrecio() : int
+        + getGenero() : String
+        + getClasificacion() : String
+        + getDesarrolladora() : String
+        + getPlataforma() : String
+
+    }
+
+    class ListaVideojuegos{
+
+        - arregloJuegos : Videojuego[]
+        - cantidadMaxima : int
+        - cantidadActual : int
+
+        + ListaVideojuegos(cantidadMaxima:int)
+
+        + agregar(juegoNuevo:Videojuego) : boolean
+        + obtener(posicion:int) : Videojuego
+        + buscar(codigo:int) : int
+        + buscar(nombre:String) : int
+
+        + getCantidadMaxima() : int
+        + getCantidadActual() : int
+        + getArregloJuegos() : Videojuego
+
+    }
+
+    class Empleado{
+        - nombreDeUsuario : String
+        - contrasena : String
+        - comicion : int
+
+        + Empleado(nombreDeUsuario:String, contrasena:String, comicion:int)
+
+        + getNombreUsuario() : String
+        + getContrasenia() : String
+        + getComicion() : int
+
+    }
+
+    class ListaEmpleados{
+
+        - arregloEmleados : Empleado[]
+        - cantidadMaxima : int
+        - cantidadActual : int
+
+        + ListaEmpleados(cantidadMaxima:int)
+
+
+        + obtener(posicion:int) : Empleado
+        + buscar(contraseña:String) : int
+        + buscar(nombre:String) : int
+
+        + getCantidadMaxima() : int
+        + getCantidadActual() : int
+        + getArregloEmpleados() : Empleado
+
+    }
+
+    class Cliente{
+
+        - rut : String
+        - nombreCompleto : String
+        - email : String
+
+        + Cliente(rut:String, nombreCompleto:String, email:String)
+
+        + getRut() : String
+        + getNombreCompleto() : String
+        + getEmail() : String
+
+    }
+
+    class ListaClientes{
+
+        - arregloClientes : Cliente[]
+        - cantidadMaxima : int
+        - cantidadActual : int
+
+        + ListaClientes(cantidadMaxima:int)
+
+        + agregar(nuevoCliente:Cliente) : boolean
+        + obtener(posicion:int) : Cliente
+        + buscar(rut:String) : int
+
+        + getCantidadMaxima() : int
+        + getCantidadActual() : int
+        + getArregloClentes() : Cliente
+
+    }
+
+
+}
+
+
+'Relaciones
+
+ListaVideojuegos "   1" o--right-- " 10" Videojuego : almacena
+ListaEmpleados "1" o--right-- "5" Empleado : almacena
+ListaClientes "1" o-right- "*" Cliente : almacena
+
+Empleado "1" --> "*" Cliente : atiende
+Cliente "1" --> "*" Videojuego : compra
+
+
+@enduml

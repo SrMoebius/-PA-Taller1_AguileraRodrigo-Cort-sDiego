@@ -1,10 +1,12 @@
+package Programa;
+
 import ucn.In;
 
 import java.io.IOException;
 
 public class ListaEmpleados {
 
-    private Empleado [] listaEmpleados;
+    private Empleado[] listaEmpleados;
     private int cantidadMaxima;
     private int cantidadActual;
 
