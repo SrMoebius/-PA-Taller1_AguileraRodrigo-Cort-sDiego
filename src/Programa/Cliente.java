@@ -1,3 +1,5 @@
+package Programa;
+
 public class Cliente {
 
     private String rut;

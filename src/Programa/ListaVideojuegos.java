@@ -1,3 +1,5 @@
+package Programa;
+
 import ucn.ArchivoEntrada;
 import ucn.ArchivoSalida;
 import ucn.In;
@@ -14,7 +16,7 @@ public class ListaVideojuegos {
     private int cantidadPlaystation = 0;
     private int cantidadXbox = 0;
 
-    private Videojuego [] listaVideojuegos;
+    private Videojuego[] listaVideojuegos;
 
     public ListaVideojuegos(int cantidadMaxima) {
         this.cantidadMaxima = cantidadMaxima;
@@ -199,24 +201,22 @@ public class ListaVideojuegos {
      *
      * @return Devuelve un int con la posicion de los videojuegos mas vendidos
      */
-    public int buscarvideojuegoMasVendido(){
+    public int buscarCantidadMaximaVendida(){
 
-        int posicionJuegoMasVendido = -1;
+        int cantidadMaximaVendida = 0;
 
-        int cantidadMasVendido =0;
 
         for(int i=0; i<this.cantidadActual;i++){
 
-            if(this.listaVideojuegos[i].getCantidadVentas() > cantidadMasVendido){
+            if(this.listaVideojuegos[i].getCantidadVentas() > cantidadMaximaVendida){
 
-                posicionJuegoMasVendido = i;
-                cantidadMasVendido = listaVideojuegos[i].getCantidadVentas();
+                cantidadMaximaVendida = listaVideojuegos[i].getCantidadVentas();
 
             }
 
         }
 
-        return posicionJuegoMasVendido;
+        return cantidadMaximaVendida;
 
     }
 

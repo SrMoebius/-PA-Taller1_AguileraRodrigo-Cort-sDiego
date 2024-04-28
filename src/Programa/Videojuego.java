@@ -1,3 +1,5 @@
+package Programa;
+
 public class Videojuego {
 
    private int codigo;
@@ -75,7 +77,7 @@ public class Videojuego {
     }
 
     public String empaquetarVideojuego(int posicion){
-        String datosVideojuego = "\nCodigo: "+this.getCodigo() +"\nNombre videojuego: "+getNombre() + "\nPrecio: "+getPrecio()+ "\nGenero: "+getGenero();
+        String datosVideojuego = "\nCodigo: "+this.getCodigo() +"\nNombre videojuego: "+getNombre() + "\nPrecio: "+getPrecio()+"$"+ "\nGenero: "+getGenero();
 
         return datosVideojuego;
 

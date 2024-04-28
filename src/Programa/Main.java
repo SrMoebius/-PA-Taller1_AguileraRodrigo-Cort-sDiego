@@ -1,3 +1,4 @@
+package Programa;
 
 import ucn.*;
 
@@ -107,7 +108,7 @@ public class Main {
             // Opcion para cerrar el programa.
 
             case "2" ->{
-                StdOut.println("Cerrando Programa");
+                StdOut.println("Cerrando Programa ʕ•́ᴥ•̀ʔっ♡");
                 menuinicial = true;
 
 
@@ -201,7 +202,7 @@ return posicionEmpleado;
      */
 
     public static void MenuPrincipal(ListaEmpleados listaEmpleados, ListaVideojuegos listaVideojuegos, ListaCliente listaCliente,
-                                     int posicionEmpleado,String generoOferta){
+                                     int posicionEmpleado, String generoOferta){
 
 
         boolean menu = false;
@@ -222,6 +223,7 @@ return posicionEmpleado;
 
         StdOut.print("\nOpcion: ");
         String opcion = StdIn.readString();
+
         switch (opcion){
 
             case "1" -> {
@@ -253,8 +255,6 @@ return posicionEmpleado;
             //excepciones
             default -> {
                 StdOut.println("\ntermino ingresado incorrecto..");
-                StdOut.println("");
-
 
             }
 
@@ -294,24 +294,40 @@ return posicionEmpleado;
             String texto = "\nIngrese una opcion: ";
             int opcion = verificarNumero(texto);
 
+
+
+            //todo finalizar estadistica 1, se debe imprimir si existen mas videojuegos con la misma cantidad de ventas
             if(opcion == 1){
 
-                int videojuegoMasvendido= listaVideojuegos.buscarvideojuegoMasVendido();
+                StdOut.println("********************************************************************");
+                StdOut.println("Estadistica: videojuego con mayor cantidad de ventas: ");
 
-                if(videojuegoMasvendido == -1){
-                    StdOut.println("\nNo se registra un videojuego mas vendido");
+
+                int cantidadMaximaVendida = listaVideojuegos.buscarCantidadMaximaVendida();
+
+                if( cantidadMaximaVendida == 0){
+                    StdOut.println("\nNo se registra ningun videojuego que sea el mas vendido");
                 }
 
                 else {
 
-                    StdOut.println(listaVideojuegos.empaquetarVideojuego(videojuegoMasvendido));
+                    for(int i= 0; i< listaVideojuegos.getCantidadActual();i++){
+
+
+                        if(listaVideojuegos.getListaVideojuegos()[i].getCantidadVentas() == cantidadMaximaVendida){
+
+                            StdOut.println(listaVideojuegos.empaquetarVideojuego(i));
+
+                        }
+
+                    }
                 }
 
 
             }
 
-            if(opcion ==2){
 
+            if(opcion == 2){
 
 
                 String plataformaventas;
@@ -345,13 +361,12 @@ return posicionEmpleado;
                 }
 
 
-
-
                if(existeUnaCantidadMayor != false){
-
-                   StdOut.println("\nLa plataforma con mayor cantidad de ventas es: ");
-                   StdOut.println(plataformaventas);
+                   StdOut.println("********************************************************************");
+                   StdOut.println("\nEstadistica: plataforma con mayor cantidad de ventas: ");
+                   StdOut.println("\n"+ plataformaventas);
                    StdOut.println("Con una cantidad de: "+cantidadVentasPlataformas);
+                   StdOut.println("********************************************************************");
                }
 
                else {
@@ -364,15 +379,26 @@ return posicionEmpleado;
             // todo: Estadistica 3
 
 
+            if(opcion == 3){
 
-            if(opcion ==4){
+                StdOut.println("********************************************************************");
+                StdOut.println("Estadistica: ventas realizadas a clientes miembros ");
+                StdOut.println("\nCantidad de compras realizadas a miembros: "+listaCliente.getCantidadVentas());
+                StdOut.println("Monto total de las ventas realizadas a miembros: "+listaCliente.getMontoTotalVentas());
+                StdOut.println("********************************************************************");
+            }
 
+
+
+            if(opcion == 4){
+                StdOut.println("********************************************************************");
+                StdOut.println("Estadistica: dinero total recaudado ");
                 StdOut.println("\nEl monto total es: "+listaVideojuegos.montoTotal()+"$");
-
+                StdOut.println("********************************************************************");
 
             }
 
-            if(opcion ==5){
+            if(opcion == 5){
 
                int posicionEmpleadoMayorVentas = listaEmpleados.buscarEmpleadoMasVentas();
 
@@ -385,21 +411,28 @@ return posicionEmpleado;
 
                    Empleado empleadoInstancia = listaEmpleados.getListaEmpleados()[posicionEmpleadoMayorVentas];
 
-                   StdOut.println("\n*** El empleado con mayor ventas ***");
-                   StdOut.println("\nNickname: "+empleadoInstancia.getNombreUsuario()+ " Cantidad de ventas: "+empleadoInstancia.getCantidadVentas()+" \nDinero ganado: "+empleadoInstancia.getComicion());
-
+                   StdOut.println("********************************************************************");
+                   StdOut.println("\n*** Estadistica : empleado con mayor ventas ***");
+                   StdOut.println("\nNickname: "+empleadoInstancia.getNombreUsuario()+ "\n Cantidad de ventas: "+empleadoInstancia.getCantidadVentas()+" \nDinero ganado: "+empleadoInstancia.getComicion());
+                   StdOut.println("********************************************************************");
 
                }
             }
 
 
-            if(opcion ==6){
+            if(opcion == 6){
 
                 StdOut.println("\nVolviendo al menu anterior..");
                 menu = true;
             }
 
+
+            StdOut.println("[Ingrese enter para continuar]");
+            String enter = StdIn.readString();
+
         }
+
+
 
 
     }
@@ -414,14 +447,19 @@ return posicionEmpleado;
      */
     private static void buscarVideojuego(ListaVideojuegos listaVideojuegos) {
 
-        StdOut.println("\neliga una opcion para buscar el videojuego!!");
-        StdOut.println("[1] Codigo unico");
-        StdOut.println("[2] Nombre Videojuego");
-
-        String opcion = StdIn.readString();
 
         int posicionJuego;
 
+        boolean buscarvideojuegoMenu = false;
+        String opcion;
+
+        while (buscarvideojuegoMenu != true){
+
+            StdOut.println("\neliga una opcion para buscar el videojuego!!");
+            StdOut.println("[1] Codigo unico");
+            StdOut.println("[2] Nombre Videojuego");
+
+            opcion = StdIn.readString();
         switch (opcion){
 
 
@@ -442,6 +480,9 @@ return posicionEmpleado;
                     StdOut.println(listaVideojuegos.empaquetarVideojuego(posicionJuego));
                 }
 
+
+
+                buscarvideojuegoMenu = true;
             }
 
             case "2" -> {
@@ -463,12 +504,17 @@ return posicionEmpleado;
                 }
 
 
+
+                buscarvideojuegoMenu = true;
+
             }
             default -> {
                 StdOut.println("\nEstimado usuario, el termino "+opcion+ " no es valido, ingrese nuevamente");
-                StdOut.println("\nIngrese enter para continuar.");
-                String enter = StdIn.readLine();
+
             }
+
+         }
+
         }
 
         StdOut.println("\nIngrese enter para continuar");
@@ -498,7 +544,7 @@ return posicionEmpleado;
      * @param posicionEmpleado
      */
     public static boolean venderVideojuego(ListaVideojuegos listaVideojuegos, ListaEmpleados listaEmpleados,
-                                           ListaCliente listaCliente,String generoOferta, int posicionEmpleado){
+                                           ListaCliente listaCliente, String generoOferta, int posicionEmpleado){
 
         boolean miembro = false;
 
@@ -590,7 +636,7 @@ return posicionEmpleado;
                              }
                              else {
 
-                                 StdOut.println("ya existe un cliente con este rut!!");
+                                 StdOut.println("\nya existe un cliente con este rut!!");
 
                              }
                          }
@@ -646,8 +692,8 @@ return posicionEmpleado;
                   precio = (int) (videojuegoBuscado.getPrecio()*0.70);
 
                 StdOut.println("\nSe aplica el descuento..");
-                StdOut.println("\nPrecio original : "+listaVideojuegos.getListaVideojuegos()[posicion].getPrecio());
-                StdOut.println("\nNuevo precio: "+precio);
+                StdOut.println("Precio original : "+listaVideojuegos.getListaVideojuegos()[posicion].getPrecio()+"$");
+                StdOut.println("Nuevo precio: "+precio+"$");
 
             }
 
@@ -676,6 +722,9 @@ return posicionEmpleado;
 
                 StdOut.println("Compra realizada!");
 
+
+
+                //Realizar estadisticas:
                 int comicion = (int) (empleadoComicion.getComicion()+(precio*0.02));
                 int cantidadVentas = empleadoComicion.getCantidadVentas()+1;
 
@@ -684,12 +733,12 @@ return posicionEmpleado;
                 empleadoComicion.setComicion(comicion);
                 empleadoComicion.setCantidadVentas(cantidadVentas);
 
-                //se registra que el videojuego se vendio, y el monto total al que se vendio
+                //se registra que videojuego se vendio, y el monto total al que se vendio
                 videojuegoBuscado.setMontototal((videojuegoBuscado.getMontototal()+precio));
                 videojuegoBuscado.setCantidadVentas((videojuegoBuscado.getCantidadVentas()+1));
 
-                //contador segun la plataforma del videojuego comprado
 
+                //contador segun la plataforma del videojuego comprado
 
                    if(videojuegoBuscado.getPlataforma().equalsIgnoreCase("Nintedo")){
 
@@ -713,6 +762,15 @@ return posicionEmpleado;
                        listaVideojuegos.setCantidadXbox((listaVideojuegos.getCantidadXbox()+1));
 
                    }
+
+
+                   if(miembro == true){
+
+                       listaCliente.setCantidadVentas(listaCliente.getCantidadVentas()+1);
+                       listaCliente.setMontoTotalVentas(listaCliente.getMontoTotalVentas()+precio);
+                   }
+
+
 
                 menuCompra = true;
                }

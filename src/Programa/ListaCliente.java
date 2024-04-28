@@ -1,16 +1,24 @@
+package Programa;
+
 public class ListaCliente {
 
     private int cantidadMaxima;
 
     private int cantidadActual;
 
-    private Cliente [] listaClientes;
+    private Cliente[] listaClientes;
+
+    private int cantidadVentas;
+
+    private int montoTotalVentas;
 
     public ListaCliente(int cantidadMaxima) {
-        this.cantidadMaxima = cantidadMaxima;
-        this.cantidadActual =0;
-        this.listaClientes = new Cliente[this.cantidadMaxima];
 
+        this.cantidadMaxima = cantidadMaxima;
+        this.cantidadActual = 0;
+        this.listaClientes = new Cliente[this.cantidadMaxima];
+        this.cantidadVentas = 0;
+        this.montoTotalVentas = 0;
     }
 
     public int getCantidadMaxima() {
@@ -52,7 +60,7 @@ return posicion;
 
     /**
      *
-     * Función para agregar un Cliente, verificando si existe o si la lista permite ingresar un cliente nuevo.
+     * Función para agregar un Programa.Cliente, verificando si existe o si la lista permite ingresar un cliente nuevo.
      *
      * @param clientenuevo
      *
@@ -87,4 +95,21 @@ return posicion;
 
     }
 
+
+    public int getCantidadVentas() {
+        return cantidadVentas;
+    }
+
+    public int getMontoTotalVentas() {
+        return montoTotalVentas;
+    }
+
+
+    public void setCantidadVentas(int cantidadVentas) {
+        this.cantidadVentas = cantidadVentas;
+    }
+
+    public void setMontoTotalVentas(int montoTotalVentas) {
+        this.montoTotalVentas = montoTotalVentas;
+    }
 }

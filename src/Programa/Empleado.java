@@ -1,8 +1,10 @@
+package Programa;
+
 public class Empleado {
 
     private String nombreUsuario;
     private String contrasenia;
-    private double comicion;
+    private int comicion;
 
     private int cantidadVentas;
 
@@ -10,7 +12,7 @@ public class Empleado {
         this.nombreUsuario = nombreUsuario;
         this.contrasenia = contrasenia;
         this.comicion = 0;
-        cantidadVentas = 0;
+        this.cantidadVentas = 0;
 
     }
 
@@ -26,7 +28,7 @@ public class Empleado {
         return comicion;
     }
 
-    public void setComicion(double comicion) {
+    public void setComicion(int comicion) {
         this.comicion = comicion;
     }
 
