@@ -165,7 +165,7 @@ public class Main {
         // se compara los datos ingresados por teclado con los datos que se encontraron en la instancia empleado anterior
         // si los términos son iguales, (el nombre usuario y contraseña) se permite iniciar sesión y se retorna al posición.
 
-        if (empleadoBuscar.getContrasenia().equalsIgnoreCase(contrasenia) && empleadoBuscar.getNombreUsuario().equalsIgnoreCase(nombre) || contrasenia.contains("ñ")) {
+        if (empleadoBuscar.getContrasenia().equalsIgnoreCase(contrasenia) && empleadoBuscar.getNombreUsuario().equalsIgnoreCase(nombre)) {
 
             condiciones = true;
 
@@ -349,7 +349,7 @@ public class Main {
                 }
                 else {
 
-                   plataformaventas = "\nExisten 2 o mas plataformas con la misma cantidad de ventas.";
+                   plataformaventas = "\nExisten 2 o más plataformas con la misma cantidad de ventas.";
                    existeUnaCantidadMayor = false;
 
                 }
@@ -450,8 +450,8 @@ public class Main {
 
         while (buscarvideojuegoMenu != true) {
 
-            StdOut.println("\neliga una opcion para buscar el videojuego!!");
-            StdOut.println("[1] Codigo unico");
+            StdOut.println("\nEliga una opción para buscar el videojuego!!");
+            StdOut.println("[1] Código único");
             StdOut.println("[2] Nombre Videojuego");
 
             opcion = StdIn.readString();
@@ -461,14 +461,14 @@ public class Main {
 
                 case "1" -> {
 
-                    String frase ="\nIngrese el codigo unico del videojuego (numero entero, ejemplo 1): ";
+                    String frase ="\nIngrese el código único del videojuego (número entero, ejemplo 1): ";
                     int numeroCodigoUnico = verificarNumero(frase);
 
                      posicionJuego = listaVideojuegos.buscarVideojuego(numeroCodigoUnico);
 
                     if (posicionJuego == -1) {
 
-                        StdOut.println("\nel videojuego no se ha encontrado en la lista");
+                        StdOut.println("\nEl videojuego no se ha encontrado en la lista");
 
                     }
 
@@ -494,7 +494,7 @@ public class Main {
 
                     if (posicionJuego == -1) {
 
-                        StdOut.println("\nel videojuego no se ha encontrado en la lista");
+                        StdOut.println("\nEl videojuego no se ha encontrado en la lista");
 
                     }
 
@@ -512,7 +512,7 @@ public class Main {
 
                 default -> {
 
-                    StdOut.println("\nEstimado usuario, el termino "+opcion+ " no es valido, ingrese nuevamente");
+                    StdOut.println("\nEstimado usuario, el término " + opcion + " no es válido, ingrese nuevamente");
 
                 }
 
@@ -548,9 +548,12 @@ public class Main {
 
         if (posicion == -1) {
 
-            StdOut.println("\nEl videojuego no se encuentra en el registro :( \n");
-            return false;
+            StdOut.println("\nEl videojuego no se encuentra en el registro :(");
 
+            StdOut.println("\nPresione ENTER para continuar");
+            StdIn.readString();
+
+            return false;
         }
 
 
@@ -820,7 +823,7 @@ public class Main {
 
             } catch (NumberFormatException exception) {
 
-                StdOut.println("Estimado usuario, ingrese un numero valido..");
+                StdOut.println("Estimado usuario, ingrese un número válido..");
 
             }
 
