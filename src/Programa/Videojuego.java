@@ -2,24 +2,20 @@ package Programa;
 
 public class Videojuego {
 
-   private int codigo;
-   private String nombre;
-
-   private int precio;
-
-   private String genero;
-
-   private String ClasificacionPorEdades;
-
-   private String desarolladora;
-
-   private String plataforma;
+    private int codigo;
+    private String nombre;
+    private int precio;
+    private String genero;
+    private String ClasificacionPorEdades;
+    private String desarolladora;
+    private String plataforma;
 
     private int cantidadVentas;
     private int montototal;
 
 
     public Videojuego(int codigo, String nombre, int precio, String genero, String clasificacionPorEdades, String desarolladora, String plataforma) {
+
         this.codigo = codigo;
         this.nombre = nombre;
         this.precio = precio;
@@ -27,6 +23,7 @@ public class Videojuego {
         this.ClasificacionPorEdades = clasificacionPorEdades;
         this.desarolladora = desarolladora;
         this.plataforma = plataforma;
+
         this.cantidadVentas = 0;
         this.montototal = 0;
 
@@ -76,14 +73,13 @@ public class Videojuego {
         this.montototal = montototal;
     }
 
-    public String empaquetarVideojuego(int posicion){
+    public String empaquetarVideojuego(int posicion) {
+
         String datosVideojuego = "\nCodigo: "+this.getCodigo() +"\nNombre videojuego: "+getNombre() + "\nPrecio: "+getPrecio()+"$"+ "\nGenero: "+getGenero();
 
         return datosVideojuego;
 
     }
-
-
 
 
 }

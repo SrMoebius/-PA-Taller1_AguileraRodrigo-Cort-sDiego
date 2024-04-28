@@ -12,30 +12,29 @@ public class ListaEmpleados {
 
 
     public ListaEmpleados(int cantidadMaxima) {
+
         this.cantidadMaxima = cantidadMaxima;
         this.cantidadActual = 0;
         this.listaEmpleados = new Empleado[this.cantidadMaxima];
+
     }
 
 
     /**
      *
-     * Función para leer un archivo con los datos de los "trabajadores.txt"
+     * Método para realizar la lectura de archivos de los Empleados.
      *
-     * Se guardan en la lista de clientes
-     *
-     *
+     * @throws IOException
      */
-
-    void LecturaArchivo() throws IOException {
+    public void LecturaArchivo() throws IOException {
 
         Empleado nuevoEmpleado;
 
         In archivoEntrada = new In("Trabajadores.txt");
 
-        while (!archivoEntrada.isEmpty()){
+        while (!archivoEntrada.isEmpty()) {
 
-            String [] separacionEmpleado = archivoEntrada.readLine().split(",");
+            String[] separacionEmpleado = archivoEntrada.readLine().split(",");
 
             String nombre = separacionEmpleado[0];
             String contrasenia = separacionEmpleado[1];
@@ -45,6 +44,7 @@ public class ListaEmpleados {
             this.listaEmpleados[this.cantidadActual] = nuevoEmpleado;
 
             this.cantidadActual++;
+
         }
 
         archivoEntrada.close();
@@ -54,26 +54,57 @@ public class ListaEmpleados {
 
     /**
      *
-     * Función para buscar un empleado
-     * @param nombre
+     * Método para buscar un empleado por su nombre.
      *
-     * @return Devuelve una posicion donde se encuentra el empleado buscado.
+     * @param nombre
+     * @return Devuelve un int con la posición donde se encuentra el empleado buscado.
      */
-    public int buscarEmpleado(String nombre){
+    public int buscarEmpleado(String nombre) {
 
         int posicion = -1;
 
-        for(int i=0; i<this.cantidadActual;i++){
+        for (int i = 0; i < this.cantidadActual; i++) {
 
-            if(this.listaEmpleados[i].getNombreUsuario().equalsIgnoreCase(nombre)){
+            if (this.listaEmpleados[i].getNombreUsuario().equalsIgnoreCase(nombre)){
 
                 posicion = i;
+
             }
 
         }
+
         return posicion;
 
     }
+
+
+    /**
+     *
+     * Método para buscar en la lista el empleado con más ventas.
+     *
+     * @return Devuelve un int con la posición de el empleado con más ventas.
+     */
+    public int buscarEmpleadoMasVentas() {
+
+        int posicionEmpleadoMasVentas = -1;
+
+        int cantidadMasVentas = 0;
+
+        for (int i = 0; i < this.cantidadActual; i++) {
+
+            if (this.listaEmpleados[i].getCantidadVentas() > cantidadMasVentas) {
+
+                posicionEmpleadoMasVentas = i;
+                cantidadMasVentas = listaEmpleados[i].getCantidadVentas();
+
+            }
+
+        }
+
+        return posicionEmpleadoMasVentas;
+
+    }
+
 
     public Empleado[] getListaEmpleados() {
         return listaEmpleados;
@@ -87,33 +118,5 @@ public class ListaEmpleados {
         return cantidadActual;
     }
 
-
-    /**
-     *
-     * Función para buscar en la lista el empleado con mas ventas
-     *
-     *
-     * @return Devuelve un int con la posicion de el empleado con mas ventas
-     */
-    public int buscarEmpleadoMasVentas(){
-
-        int posicionEmpleadoMasVentas = -1;
-
-        int cantidadMasVentas =0;
-
-        for(int i=0; i<this.cantidadActual;i++){
-
-            if(this.listaEmpleados[i].getCantidadVentas() > cantidadMasVentas){
-
-               posicionEmpleadoMasVentas = i;
-               cantidadMasVentas= listaEmpleados[i].getCantidadVentas();
-
-            }
-
-        }
-
-        return posicionEmpleadoMasVentas;
-
-    }
 
 }

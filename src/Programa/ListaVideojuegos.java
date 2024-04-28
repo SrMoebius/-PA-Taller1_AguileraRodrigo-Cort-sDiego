@@ -1,10 +1,6 @@
 package Programa;
 
-import ucn.ArchivoEntrada;
-import ucn.ArchivoSalida;
-import ucn.In;
-import ucn.StdOut;
-
+import ucn.*;
 import java.io.IOException;
 
 public class ListaVideojuegos {
@@ -18,7 +14,9 @@ public class ListaVideojuegos {
 
     private Videojuego[] listaVideojuegos;
 
+
     public ListaVideojuegos(int cantidadMaxima) {
+
         this.cantidadMaxima = cantidadMaxima;
         this.cantidadActual = 0;
         this.listaVideojuegos = new Videojuego[this.cantidadMaxima];
@@ -28,7 +26,6 @@ public class ListaVideojuegos {
         this.cantidadPlaystation = 0;
 
     }
-
 
 
     public Videojuego[] getListaVideojuegos() {
@@ -44,16 +41,21 @@ public class ListaVideojuegos {
     }
 
 
-    void LecturaArchivo() throws IOException {
-
+    /**
+     *
+     * Método para realizar la lectura de archivos de los Videojuegos.
+     *
+     * @throws IOException
+     */
+    public void LecturaArchivo() throws IOException {
 
         Videojuego nuevoVideojuego;
 
         In archivoEntrada = new In("Juegos.txt");
 
-        while (!archivoEntrada.isEmpty()){
+        while (!archivoEntrada.isEmpty()) {
 
-            String [] separacionVideojuego = archivoEntrada.readLine().split(",");
+            String[] separacionVideojuego = archivoEntrada.readLine().split(",");
 
             int codigo = Integer.parseInt(separacionVideojuego[0]);
             String nombre = separacionVideojuego[1];
@@ -66,14 +68,22 @@ public class ListaVideojuegos {
             nuevoVideojuego = new Videojuego(codigo,nombre,precio,genero,clasificacionPorEdades,desarolladora,plataforma);
 
             this.listaVideojuegos[this.cantidadActual] = nuevoVideojuego;
-
             this.cantidadActual++;
+
         }
 
         archivoEntrada.close();
 
     }
 
+
+    /**
+     *
+     * Método para buscar un videojuego por su código.
+     *
+     * @param codigo
+     * @return Devuelve la posición del videojuego buscado.
+     */
     public int buscarVideojuego(int codigo) {
 
         Videojuego videojuegoActual;
@@ -93,17 +103,15 @@ public class ListaVideojuegos {
         return -1;
 
     }
+
+
     /**
      *
-     * Función para buscar una posicion de un videojuego
+     * Método para buscar un videojuego por su nombre.
+     *
      * @param nombreVideojuego
-     *
-     *
-     * @return Devuelve la posicion del videojuego buscado
+     * @return Devuelve la posición del videojuego buscado.
      */
-
-
-    //Buscar juego por nombre
     public int buscarVideojuego(String nombreVideojuego) {
 
         Videojuego videojuegoActual;
@@ -124,40 +132,40 @@ public class ListaVideojuegos {
 
     }
 
+
     /**
      *
-     * Función para crear una lista con los géneros de los videojuegos (sin repetirse)
-     * genera un string con un genero de videojuego.
+     * Método para crear una lista con los géneros de los videojuegos (sin repetirse),
+     *  eligiendo un género aleatorio.
      *
-     *
-     * @return Devuelve un String con el genero random de los videojuegos
+     * @return Devuelve un String con un género random de los videojuegos.
      */
-
-    public String generoEnOferta(){
-
+    public String generoEnOferta() {
 
         String[] listaGeneros = new String[30];
         int contador =0;
 
-        for(int i=0; i<this.cantidadActual;i++){
+        for (int i = 0; i < this.cantidadActual; i++) {
 
             boolean existe = false;
 
-            for(int j=0; j<contador;j++){
+            for (int j = 0; j < contador; j++) {
 
-
-                if(listaVideojuegos[i].getGenero().equalsIgnoreCase(listaVideojuegos[j].getGenero())){
+                if (listaVideojuegos[i].getGenero().equalsIgnoreCase(listaVideojuegos[j].getGenero())) {
 
                     existe = true;
 
                 }
+
             }
 
-            if(existe == false){
+            if (existe == false) {
 
                 listaGeneros[contador] = listaVideojuegos[i].getGenero();
                 contador++;
+
             }
+
         }
 
         int posicionRandom = (int) (Math.random() * contador+1);
@@ -166,19 +174,17 @@ public class ListaVideojuegos {
 
         return generoOferta;
 
-        }
-
+    }
 
 
     /**
      *
-     * Función para crear un String con los datos de un videojuego.
+     * Método que crea un String con la toda información de un videojuego.
      *
-     *
-     * @return Devuelve un String con el genero random de los videojuegos
+     * @param posicion
+     * @return Devuelve un String con el genero random de los videojuegos.
      */
-
-        public String empaquetarVideojuego (int posicion){
+    public String empaquetarVideojuego (int posicion) {
 
         //videojuego encontrado
         Videojuego videojuego = this.listaVideojuegos[posicion];
@@ -186,29 +192,27 @@ public class ListaVideojuegos {
 
         String instanciaVideojuego = "Codigo unico: "+videojuego.getCodigo()+" \nNombre: "+videojuego.getNombre()+
                 " \nPrecio: "+videojuego.getPrecio() + "\nGenero: "+videojuego.getGenero() +" \nClasificacion: "+videojuego.getClasificacionPorEdades()+
-                " \nDesarolladora: "+videojuego.getGenero() + " \nPlataforma: "+videojuego.getPlataforma()+" \nCantidad de ventas: "+videojuego.getCantidadVentas()
-                +" \nMonto Total: "+videojuego.getMontototal()+" \n";
+                " \nDesarolladora: "+videojuego.getGenero() + " \nPlataforma: "+videojuego.getPlataforma()+" \nCantidad de ventas: "+videojuego.getCantidadVentas()+
+                " \nMonto Total: "+videojuego.getMontototal()+" \n";
 
         return instanciaVideojuego;
 
-        }
+    }
 
 
     /**
      *
-     * Función para buscar en la lista el videojuego mas vendido
+     * Método para buscar en la lista, el videojuego más vendido.
      *
-     *
-     * @return Devuelve un int con la posicion de los videojuegos mas vendidos
+     * @return Devuelve un int con la posición del videojuego con mayores ventas totales.
      */
-    public int buscarCantidadMaximaVendida(){
+    public int buscarCantidadMaximaVendida() {
 
         int cantidadMaximaVendida = 0;
 
+        for (int i = 0; i < this.cantidadActual; i++) {
 
-        for(int i=0; i<this.cantidadActual;i++){
-
-            if(this.listaVideojuegos[i].getCantidadVentas() > cantidadMaximaVendida){
+            if (this.listaVideojuegos[i].getCantidadVentas() > cantidadMaximaVendida) {
 
                 cantidadMaximaVendida = listaVideojuegos[i].getCantidadVentas();
 
@@ -220,23 +224,25 @@ public class ListaVideojuegos {
 
     }
 
+
     /**
      *
-     * Función para calcular el monto total de dinero que se ha generado con las ventas
-     *
+     * Método para calcular el monto total de dinero que se ha recaudado con las ventas.
      *
      * @return Devuelve un int con el monto total de las ventas.
      */
-    public int montoTotal(){
+    public int montoTotal() {
 
         int montototalTienda=0;
 
-        for(int i=0; i<this.cantidadActual;i++){
+        for (int i = 0; i < this.cantidadActual; i++) {
 
             montototalTienda += this.listaVideojuegos[i].getMontototal();
+
         }
 
         return montototalTienda;
+
     }
 
 

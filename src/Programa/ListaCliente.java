@@ -3,13 +3,10 @@ package Programa;
 public class ListaCliente {
 
     private int cantidadMaxima;
-
     private int cantidadActual;
-
     private Cliente[] listaClientes;
 
     private int cantidadVentas;
-
     private int montoTotalVentas;
 
     public ListaCliente(int cantidadMaxima) {
@@ -17,8 +14,10 @@ public class ListaCliente {
         this.cantidadMaxima = cantidadMaxima;
         this.cantidadActual = 0;
         this.listaClientes = new Cliente[this.cantidadMaxima];
+
         this.cantidadVentas = 0;
         this.montoTotalVentas = 0;
+
     }
 
     public int getCantidadMaxima() {
@@ -34,44 +33,48 @@ public class ListaCliente {
     }
 
 
-    public int buscarCliente(String rut){
+    /**
+     *
+     * Método para buscar un cliente por su rut.
+     *
+     * @param rut
+     * @return Devuelve un int con la posición donde se encuentra el cliente buscado.
+     */
+    public int buscarCliente(String rut) {
 
+        int posicion = -1;
 
-        int posicion =-1;
-
-        if(cantidadActual == 0){
+        if (cantidadActual == 0) {
             return -1;
         }
 
-        for(int i=0; i<this.cantidadActual;i++){
+        for (int i = 0; i < this.cantidadActual; i++) {
 
-            if(this.listaClientes[i].getRut().equalsIgnoreCase(rut)){
+            if (this.listaClientes[i].getRut().equalsIgnoreCase(rut)) {
 
                 posicion = i;
-            }
 
+            }
 
         }
 
-
-return posicion;
+        return posicion;
 
     }
 
+
     /**
      *
-     * Función para agregar un Programa.Cliente, verificando si existe o si la lista permite ingresar un cliente nuevo.
+     * Método para agregar un cliente, verificando si existe o si la lista permite ingresar un cliente nuevo.
      *
      * @param clientenuevo
-     *
-     * @return Devuelve un String con el genero random de los videojuegos
+     * @return Devuelve un boolean, true si se agregó correctamente, y false si no.
      */
-    public boolean AgregarCliente(Cliente clientenuevo){
+    public boolean AgregarCliente(Cliente clientenuevo) {
 
-        if(this.cantidadActual == this.cantidadMaxima){
+        if (this.cantidadActual == this.cantidadMaxima) {
             return false;
         }
-
 
         //se guarda el rut del cliente ingresado
         String rutClienteBuscado = clientenuevo.getRut();
@@ -79,16 +82,15 @@ return posicion;
         // se verifica que NO exista en la lista, para no repetirse.
         int Verificar = buscarCliente(rutClienteBuscado);
 
-        if(Verificar != -1 ){
+        if (Verificar != -1 ) {
 
-            // el cliente ya existe, por lo tanto..
+            // el cliente ya existe, por lo tanto...
             return false;
 
         }
 
 
         this.listaClientes[this.cantidadActual] = clientenuevo;
-
         this.cantidadActual++;
 
         return true;
@@ -112,4 +114,5 @@ return posicion;
     public void setMontoTotalVentas(int montoTotalVentas) {
         this.montoTotalVentas = montoTotalVentas;
     }
+
 }

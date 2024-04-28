@@ -8,13 +8,17 @@ public class Empleado {
 
     private int cantidadVentas;
 
+
     public Empleado(String nombreUsuario, String contrasenia, int comicion) {
+
         this.nombreUsuario = nombreUsuario;
         this.contrasenia = contrasenia;
         this.comicion = 0;
+
         this.cantidadVentas = 0;
 
     }
+
 
     public String getNombreUsuario() {
         return nombreUsuario;
@@ -39,4 +43,5 @@ public class Empleado {
     public void setCantidadVentas(int cantidadVentas) {
         this.cantidadVentas = cantidadVentas;
     }
+
 }
