@@ -1,6 +1,7 @@
 package Programa;
 
 import ucn.In;
+import ucn.StdOut;
 
 import java.io.IOException;
 
@@ -39,7 +40,38 @@ public class ListaEmpleados {
             String nombre = separacionEmpleado[0];
             String contrasenia = separacionEmpleado[1];
 
-            nuevoEmpleado = new Empleado(nombre,contrasenia,0);
+            String contrasenia2 = contrasenia;
+
+            String[] caracteresContrasenia = new String[contrasenia.length()];
+
+
+            if (contrasenia.contains("Ã±")) {
+
+                contrasenia2 = "";
+
+                caracteresContrasenia = contrasenia.split("");
+
+                for (int i = 0; i < contrasenia.length(); i++) {
+
+                    if (caracteresContrasenia[i].equalsIgnoreCase("Ã")) {
+
+                        caracteresContrasenia[i] = "n";
+                        caracteresContrasenia[i+1] = "";
+
+                    }
+
+                }
+
+                for (int i = 0; i < contrasenia.length(); i++) {
+
+                    contrasenia2 += caracteresContrasenia[i];
+
+                }
+
+            }
+
+
+            nuevoEmpleado = new Empleado(nombre,contrasenia2,0);
 
             this.listaEmpleados[this.cantidadActual] = nuevoEmpleado;
 

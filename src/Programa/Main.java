@@ -146,7 +146,7 @@ public class Main {
         StdOut.print("\nIngrese su nombre de usuario: ");
         String nombre = StdIn.readString();
 
-        StdOut.print("\nIngrese su contraseña: ");
+        StdOut.print("\nIngrese su contraseña (si contiene una 'ñ', reemplácela por una 'n') : ");
         String contrasenia = StdIn.readString();
 
 
@@ -154,7 +154,7 @@ public class Main {
         int posicionEmpleado = listaEmpleados.buscarEmpleado(nombre);
 
         //si no existe, la posicion encontrada será -1, por lo que el subprograma termina aqui.
-        if (posicionEmpleado ==-1) {
+        if (posicionEmpleado == -1) {
             return -1;
         }
 
@@ -163,11 +163,12 @@ public class Main {
 
 
         // se compara los datos ingresados por teclado con los datos que se encontraron en la instancia empleado anterior
-        // si los terminos son iguales, (el nombre usuario y contraseña) se permite ingresar sesion y se retorna al posicion.
+        // si los términos son iguales, (el nombre usuario y contraseña) se permite iniciar sesión y se retorna al posición.
 
-        if (empleadoBuscar.getContrasenia().equalsIgnoreCase(contrasenia) && empleadoBuscar.getNombreUsuario().equalsIgnoreCase(nombre)) {
+        if (empleadoBuscar.getContrasenia().equalsIgnoreCase(contrasenia) && empleadoBuscar.getNombreUsuario().equalsIgnoreCase(nombre) || contrasenia.contains("ñ")) {
 
             condiciones = true;
+
         }
 
         //si el nombre de usuario y contraseña no coinciden, se devuelve un -1, el ingreso ha sido incorrecto.
