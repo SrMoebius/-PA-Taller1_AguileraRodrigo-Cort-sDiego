@@ -20,7 +20,12 @@ public class ListaVideojuegos {
     }
 
 
-    //Lectura de Archivos
+    /**
+     *
+     * Método que realiza la lectura de archivos de los Videojuegos.
+     *
+     * @param nombreArchivo
+     */
     public void lecturaArchivo(String nombreArchivo) {
 
         Videojuego nuevoVideojuego;
@@ -50,7 +55,13 @@ public class ListaVideojuegos {
     }
 
 
-    //Metodo obtener
+    /**
+     *
+     * Método que toma una posición y devuelve una instancia de tipo Videojuego.
+     *
+     * @param posicion
+     * @return Devuelve una instancia de tipo Videojuego.
+     */
     public Videojuego obtener(int posicion) {
 
         if (posicion == -1) {
@@ -61,6 +72,14 @@ public class ListaVideojuegos {
 
     }
 
+
+    /**
+     *
+     * Método para agregar una instancia de Videojuego a la listaVideojuegos.
+     *
+     * @param nuevoVideojuego
+     * @return Devuelve boolean, true si sí lo agrega y false si no.
+     */
     public boolean agregarVideojuego(Videojuego nuevoVideojuego) {
 
         this.listaVideojuegos[this.cantidadActual++] = nuevoVideojuego;
@@ -69,7 +88,13 @@ public class ListaVideojuegos {
     }
 
 
-    //Buscar juego por código
+    /**
+     *
+     * Método para buscar un videojuego tomando como parámetro su código.
+     *
+     * @param codigo
+     * @return Devuelve la posición en la que se encuentra el videojuego en la listaVideojuegos.
+     */
     public int buscarVideojuego(int codigo) {
 
         Videojuego videojuegoActual;
@@ -91,7 +116,13 @@ public class ListaVideojuegos {
     }
 
 
-    //Buscar juego por nombre
+    /**
+     *
+     * Método para buscar un videojuego tomando como parámetro su nombre.
+     *
+     * @param nombreVideojuego
+     * @return Devuelve la posición en la que se encuentra el videojuego en la listaVideojuego.
+     */
     public int buscarVideojuego(String nombreVideojuego) {
 
         Videojuego videojuegoActual;

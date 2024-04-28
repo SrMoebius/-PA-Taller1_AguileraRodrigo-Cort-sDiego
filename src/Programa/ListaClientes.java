@@ -17,6 +17,13 @@ public class ListaClientes {
     }
 
 
+    /**
+     *
+     * Método que agrega un nuevo cliente a la listaClientes.
+     *
+     * @param nuevoCliente
+     * @return Devuelve boolean, true si lo agrega correctamente, y false si no.
+     */
     public boolean agregarCliente(Cliente nuevoCliente) {
 
         //se guarda el rut del cliente ingresado
@@ -37,8 +44,14 @@ public class ListaClientes {
 
     }
 
-    //TODO: Crear método para saber si un cliente existe o no
 
+    /**
+     *
+     * Método para comprobar si un cliente existe o no.
+     *
+     * @param rut
+     * @return Devuelve boolean, true si el cliente existe, y false si no existe.
+     */
     public boolean existeCliente(String rut) {
 
         Cliente clienteActual;
@@ -58,6 +71,13 @@ public class ListaClientes {
     }
 
 
+    /**
+     *
+     * Método que toma una posición y devuelve una instancia de tipo Cliente.
+     *
+     * @param posicion
+     * @return Devuelve una instancia de tipo Cliente.
+     */
     public Cliente obtenerCliente(int posicion) {
 
         if (posicion == -1) {
@@ -69,6 +89,13 @@ public class ListaClientes {
     }
 
 
+    /**
+     *
+     * Método para buscar un cliente por su rut.
+     *
+     * @param rutCliente
+     * @return Devuelve la posición en la listaClientes del cliente buscado.
+     */
     public int buscarCliente(String rutCliente) {
 
         Cliente clienteActual;

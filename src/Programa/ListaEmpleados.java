@@ -19,7 +19,12 @@ public class ListaEmpleados {
     }
 
 
-    //Lectura de Archivos
+    /**
+     *
+     * Método que realiza la lectura de archivos de los Empleados.
+     *
+     * @param nombreArchivo
+     */
     public void lecturaArchivo(String nombreArchivo) {
 
         Empleado nuevoEmpleado;
@@ -44,7 +49,13 @@ public class ListaEmpleados {
     }
 
 
-    //Metodo obtener
+    /**
+     *
+     * Método que toma una posición y devuelve una instancia de tipo Empleado.
+     *
+     * @param posicion
+     * @return Devuelve una instancia de tipo Empleado.
+     */
     public Empleado obtener(int posicion) {
 
         return this.listaEmpleados[posicion];
