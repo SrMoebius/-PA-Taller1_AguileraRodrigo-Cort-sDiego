@@ -285,7 +285,7 @@ public class Main {
                         [5] Trabajador con más ventas
                         [6] Menú anterior""");
 
-            String texto = "\nIngrese una opcion: ";
+            String texto = "\nIngrese una opción: ";
             int opcion = verificarNumero(texto);
 
 
@@ -298,7 +298,7 @@ public class Main {
                 int cantidadMaximaVendida = listaVideojuegos.buscarCantidadMaximaVendida();
 
                 if ( cantidadMaximaVendida == 0) {
-                    StdOut.println("\nNo se registra ningun videojuego que sea el mas vendido");
+                    StdOut.println("\nNo se registra ningún videojuego que sea el más vendido");
                 }
 
                 else {

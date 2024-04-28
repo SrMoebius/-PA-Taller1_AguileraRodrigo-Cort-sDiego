@@ -168,7 +168,7 @@ public class ListaVideojuegos {
 
         }
 
-        int posicionRandom = (int) (Math.random() * contador+1);
+        int posicionRandom = (int) (Math.random() * (contador));
 
         String generoOferta = listaGeneros[posicionRandom];
 
