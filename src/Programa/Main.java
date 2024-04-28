@@ -623,16 +623,13 @@ public class Main {
                     Cliente nuevoCliente = new Cliente(rut, nombre, correo);
 
                     if (listaClientes.agregarCliente(nuevoCliente)) {
+
                         StdOut.println("\nCliente agregado con éxito!");
 
                         StdOut.print("\nDebe volver al menu y realizar la compra correctamente.");
 
                     } else {
-                        StdOut.println("\nEl cliente ingresado ya existe.");
-                    }
-                    else if(!listaClientes.agregarCliente(nuevoCliente)){
-
-                        StdOut.println("Estimado usuario, el usuario con este rut ya existe");
+                        StdOut.println("\nEstimado usuario, el usuario con este rut ya existe.");
                     }
 
                 //Caso en el que decida NO ser miembro

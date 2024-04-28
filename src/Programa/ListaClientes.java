@@ -39,6 +39,24 @@ public class ListaClientes {
 
     //TODO: Crear método para saber si un cliente existe o no
 
+    public boolean existeCliente(String rut) {
+
+        Cliente clienteActual;
+
+        for (int i = 0; i < this.cantidadActual; i++) {
+
+            clienteActual = this.listaClientes[i];
+
+            if (clienteActual.getRut().equalsIgnoreCase(rut)) {
+                return true;
+            }
+
+        }
+
+        return false;
+
+    }
+
 
     public Cliente obtenerCliente(int posicion) {
 
