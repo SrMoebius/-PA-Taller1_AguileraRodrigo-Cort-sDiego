@@ -576,22 +576,26 @@ public class Main {
                     StdOut.print("\nIngrese su rut: ");
                     String rut = StdIn.readString();
 
-                    int posicionMiembro = listaCliente.buscarCliente(rut);
+                    if (VerificarRut(rut)) {
 
-                    if (posicionMiembro == -1) {
+                        int posicionMiembro = listaCliente.buscarCliente(rut);
 
-                        StdOut.println("\nNo existe un miembro con ese rut!");
-                        StdOut.println("");
-                        StdOut.println("ingrese enter para continuar: ");
+                        if (posicionMiembro == -1) {
 
-                        String enter = StdIn.readLine();
+                            StdOut.println("\nNo existe un miembro con ese rut!");
+                            StdOut.println("");
+                            StdOut.println("ingrese enter para continuar: ");
 
-                        return false;
+                            String enter = StdIn.readLine();
+
+                            return false;
+
+                        }
+
+                        menuCliente = true;
+                        miembro = true;
 
                     }
-
-                    menuCliente = true;
-                    miembro = true;
 
                 }
 
@@ -613,38 +617,42 @@ public class Main {
 
                             case "1" -> {
 
-                             StdOut.println("\ningrese su rut");
-                             String rut = StdIn.readString();
+                                StdOut.println("\ningrese su rut (ej: 12345678-9)");
+                                String rut = StdIn.readString();
 
-                             StdOut.println("\nIngrese su nombre completo");
-                             String nombre = StdIn.readString();
+                                if (VerificarRut(rut)) {
 
-                             StdOut.println("\nIngrese un correo: ");
-                             String correo = StdIn.readString();
+                                    StdOut.println("\nIngrese su nombre completo");
+                                    String nombre = StdIn.readString();
 
-                             Cliente nuevoCliente = new Cliente(rut,nombre,correo);
+                                    StdOut.println("\nIngrese un correo: ");
+                                    String correo = StdIn.readString();
 
-                             if (listaCliente.AgregarCliente(nuevoCliente)) {
+                                    Cliente nuevoCliente = new Cliente(rut,nombre,correo);
 
-                                 miembro = true;
-                                 opcionValida = true;
-                                 menuCliente = true;
+                                    if (listaCliente.AgregarCliente(nuevoCliente)) {
 
-                             }
+                                        miembro = true;
+                                        opcionValida = true;
+                                        menuCliente = true;
 
-                             else {
+                                    }
 
-                                 StdOut.println("\nya existe un cliente con este rut!!");
+                                    else {
 
-                             }
+                                        StdOut.println("\nya existe un cliente con este rut!!");
+
+                                    }
+
+                                }
 
                             }
 
                             case "2" -> {
 
-                             StdOut.println("\n**Continue con la compra..**\n");
-                             opcionValida = true;
-                             menuCliente = true;
+                                StdOut.println("\n**Continue con la compra..**\n");
+                                opcionValida = true;
+                                menuCliente = true;
 
                             }
 
@@ -830,6 +838,48 @@ public class Main {
         }
 
         return opcion;
+
+    }
+
+
+    /**
+     * Función para comprobar que el usuario ingrese correctamente su Rut.
+     *
+     * @param rut
+     * @return devuelve true o false, dependiendo si el Rut del usuario esta correctamente ingresado.
+     */
+    public static boolean VerificarRut(String rut) {
+
+        boolean correcto = false;
+
+        if (rut.length() == 10 && rut.contains("-")) {
+
+            String[] lista = rut.split("");
+            String digitoVerificador = lista[8];
+
+            if (digitoVerificador.equals("-")) {
+
+                correcto = true;
+
+            }
+            if (lista[0].equals("-")) {
+
+                correcto = false;
+
+            }
+
+        }
+
+        if (correcto == false) {
+
+            StdOut.println("\nEL rut ingresado no es correcto\nPor favor ingrese un rut válido.");
+
+            StdOut.print("\nPresione ENTER para ocontinuar");
+            String continuar = StdIn.readString();
+
+        }
+
+        return correcto;
 
     }
 
