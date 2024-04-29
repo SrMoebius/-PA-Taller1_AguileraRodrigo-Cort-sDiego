@@ -18,9 +18,13 @@ package Programa {
         - clasificacionPorEdades : String
         - desarrolladora : String
         - plataforma : String
+        - cantidadVentas : int
+        - montoTotal : int
 
         + Videojuego(codigo:int, nombre:String, precio:int,genero:String
         clasificacionPorEdades:String, desarrolladora:String, plataforma:String)
+
+        + empaquetarVideojuego() : String
 
         + getCodigo() : int
         + getNombre() :String
@@ -29,6 +33,10 @@ package Programa {
         + getClasificacion() : String
         + getDesarrolladora() : String
         + getPlataforma() : String
+        + getCantidadVentas() : int
+        + getMontoTotal() : int
+        + setCantidadVentas() : void
+        + setMontoTotal() : void
 
     }
 
@@ -37,11 +45,17 @@ package Programa {
         - arregloJuegos : Videojuego[]
         - cantidadMaxima : int
         - cantidadActual : int
+        - cantidadNintendo : int
+        - cantidadPlaystation : int
+        - cantidadXbox : int
 
         + ListaVideojuegos(cantidadMaxima:int)
 
-        + agregar(juegoNuevo:Videojuego) : boolean
-        + obtener(posicion:int) : Videojuego
+        + lecturaArchivo() : void
+        + generoEnOferta() : String
+        + empaquetarVideojuego(posicion:int) : String
+        + buscarCantidadMaximaVendida() : int
+        + montoTotal() : int
         + buscar(codigo:int) : int
         + buscar(nombre:String) : int
 
@@ -49,18 +63,29 @@ package Programa {
         + getCantidadActual() : int
         + getArregloJuegos() : Videojuego
 
+        + getCantidadNintendo() : int
+        + getCantidadPlaystation() : int
+        + getCantidadXbox() : int
+        + setCantidadNintendo(cantidadNintendo:int) : void
+        + setCantidadPlaystation(cantidadPlaystation:int) : void
+        + setCantidadXbox(cantidadXbox:int) : void
+
     }
 
     class Empleado{
         - nombreDeUsuario : String
         - contrasena : String
         - comicion : int
+        - cantidadVentas : int
 
         + Empleado(nombreDeUsuario:String, contrasena:String, comicion:int)
 
         + getNombreUsuario() : String
         + getContrasenia() : String
         + getComicion() : int
+        + getCantidadVentas() : int
+        + setComision(comision:int) : void
+        + setCantidadVentas(cantidadVentas:int) : void
 
     }
 
@@ -72,10 +97,9 @@ package Programa {
 
         + ListaEmpleados(cantidadMaxima:int)
 
-
-        + obtener(posicion:int) : Empleado
-        + buscar(contraseña:String) : int
-        + buscar(nombre:String) : int
+        + lecturaArchivo() : void
+        + buscarEmpleado(nombre:String) : int
+        + buscarEmpleadoMasVentas() : int
 
         + getCantidadMaxima() : int
         + getCantidadActual() : int
@@ -87,13 +111,13 @@ package Programa {
 
         - rut : String
         - nombreCompleto : String
-        - email : String
+        - correoElectronico : String
 
-        + Cliente(rut:String, nombreCompleto:String, email:String)
+        + Cliente(rut:String, nombreCompleto:String, correoElectronico:String)
 
         + getRut() : String
         + getNombreCompleto() : String
-        + getEmail() : String
+        + getCorreoElectronico() : String
 
     }
 
@@ -102,16 +126,21 @@ package Programa {
         - arregloClientes : Cliente[]
         - cantidadMaxima : int
         - cantidadActual : int
+        - cantidadVentas : int
+        - montoTotalVentas : int
 
         + ListaClientes(cantidadMaxima:int)
 
         + agregar(nuevoCliente:Cliente) : boolean
-        + obtener(posicion:int) : Cliente
         + buscar(rut:String) : int
 
         + getCantidadMaxima() : int
         + getCantidadActual() : int
         + getArregloClentes() : Cliente
+        + getCantidadVentas() : int
+        + getMontoTotalVentas() : int
+        + setCantidadVentas(cantidadVentas:int) : void
+        + setMontoTotalVentas(montoTotalVentas:int) : void
 
     }
 

@@ -73,7 +73,7 @@ public class Videojuego {
         this.montototal = montototal;
     }
 
-    public String empaquetarVideojuego(int posicion) {
+    public String empaquetarVideojuego() {
 
         String datosVideojuego = "\nCodigo: "+this.getCodigo() +"\nNombre videojuego: "+getNombre() + "\nPrecio: "+getPrecio()+"$"+ "\nGenero: "+getGenero();
 
